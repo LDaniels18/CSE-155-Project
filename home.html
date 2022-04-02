@@ -1,55 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<head> </head>
 <body>
-    
-    Select Voice: <select id='voiceList'></select> <br><br>
+  <form id="myForm">
+    <input type="file" id="csvFile" accept=".csv" />
+    <br />
+    <input type="submit" value="Submit" />
+  </form>
+  <script>
+    const myForm = document.getElementById("myForm");
+    const csvFile = document.getElementById("csvFile");
 
-    <button id='btnSpeak'>Test</button>
+    function csvToArray(str, delimiter = ",") {
 
-    <script>
-        var voiceList = document.querySelector('#voiceList');
-        var btnSpeak = document.querySelector('#btnSpeak');
-        var intro = document.querySelector('#intro');
-        var synth = window.speechSynthesis;
-        const string1 = "Hello! This is a test voice sample."
-        var voices = [];
+      // slice from start of text to the first \n index
+      // use split to create an array from string by delimiter
+      const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
 
-        PopulateVoices();
-        if(speechSynthesis !== undefined){
-            speechSynthesis.onvoiceschanged = PopulateVoices;
-        }
+      // slice from \n index + 1 to the end of the text
+      // use split to create an array of each csv value row
+      const rows = str.slice(str.indexOf("\n") + 1).split("\n");
 
-        btnSpeak.addEventListener('click', ()=> {
-            var toSpeak = new SpeechSynthesisUtterance(string1);
-            var selectedVoiceName = voiceList.selectedOptions[0].getAttribute('data-name');
-            voices.forEach((voice)=>{
-                if(voice.name === selectedVoiceName){
-                    toSpeak.voice = voice;
-                }
-            });
-            synth.speak(toSpeak);
-        });
+      // Map the rows
+      // split values from each row into an array
+      // use headers.reduce to create an object
+      // object properties derived from headers:values
+      // the object passed as an element of the array
+      const arr = rows.map(function (row) {
+        const values = row.split(delimiter);
+        const el = headers.reduce(function (object, header, index) {
+          object[header] = values[index];
+          return object;
+        }, {});
+        return el;
+      });
 
-        function PopulateVoices(){
-            voices = synth.getVoices();
-            var selectedIndex = voiceList.selectedIndex < 0 ? 0 : voiceList.selectedIndex;
-            voiceList.innerHTML = '';
-            voices.forEach((voice)=>{
-                var listItem = document.createElement('option');
-                listItem.textContent = voice.name;
-                listItem.setAttribute('data-lang', voice.lang);
-                listItem.setAttribute('data-name', voice.name);
-                voiceList.appendChild(listItem);
-            });
+      // return the array
+      return arr;
+    }
 
-            voiceList.selectedIndex = selectedIndex;
-        }
-    </script>
+    myForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      const input = csvFile.files[0];
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const text = e.target.result;
+        const data = csvToArray(text);
+        document.write(JSON.stringify(data));
+      };
+      
+      reader.readAsText(input);
+    });
+  </script>
 </body>
-</html>

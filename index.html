@@ -10,11 +10,16 @@
   <div class="container">
    <div class="table-responsive">
     <h1 align="center">Test Data</h1>
-    <br />
-    <br />
+    <br/>
+    <select id="selectOption">
+      <option>Choose a currency</option>
+  </select>
+    <br/>
     <div id="currency_table">
     </div>
    </div>
+  </div>
+  <div>
   </div>
  </body>
 </html>
@@ -28,19 +33,31 @@
    {
     var currency_data = data.split(/\r?\n|\r/);
     var table_data = '<table class="table table-bordered table-striped">';
+      //count = 0 includes table titles
     for(var count = 0; count<currency_data.length; count++)
     {
      var cell_data = currency_data[count].split(",");
      table_data += '<tr>';
-     for(var cell_count=0; cell_count<cell_data.length; cell_count++)
+      //setting cell_cout = 0 includes Currency_id
+     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
      {
       if(count === 0)
       {
+        //'Currency_id | Currency_Type | USD_Rate'
        table_data += '<th>'+cell_data[cell_count]+'</th>';
       }
       else
       {
-       table_data += '<td>'+cell_data[cell_count]+'</td>';
+        //actual cell data
+        var select = document.getElementById("selectOption");
+        var options = table_data += cell_data[cell_count];
+
+        for(var i = 0; i < options.length; i++){
+          var opt = options[i];
+          var el = document.createElement("option");
+          el.textContent = opt;
+          select.appendChild(el);
+        }
       }
      }
      table_data += '</tr>';
@@ -49,4 +66,24 @@
     $('#currency_table').html(table_data);
    }
   });
+
+  // $.get(csv_path, function(data){
+  //   var csv_string = data;
+  // });
+
+  // (function(){
+  //   var csv_path = "Currency.csv";
+  //   var renderCSVDropdown = function(csv){
+  //     var dropdown = $('select#my-dropdown');
+  //     for(var i = 0; i < csv.length; i++){
+  //       var record = csv[i];
+  //       var entry = $('<option>').attr('value', record.someProperty);
+  //         dropdown.append(entry);
+  //     }
+  //   };
+  //   $.get(csv_path, function(data){
+  //     var csv = CSVToArray(data);
+  //     renderCSVDropdown(data);
+  //   });
+  // }());
 </script>

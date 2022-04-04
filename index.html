@@ -41,24 +41,24 @@
       //setting cell_cout = 0 includes Currency_id
      for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
      {
-      if(count === 0)
-      {
-        //'Currency_id | Currency_Type | USD_Rate'
-       table_data += '<th>'+cell_data[cell_count]+'</th>';
-      }
-      else
-      {
+      // if(count === 0)
+      // {
+      //   //'Currency_id | Currency_Type | USD_Rate'
+      //  table_data += '<th>'+cell_data[cell_count]+'</th>';
+      // }
+      // else
+      // {
         //actual cell data
         var select = document.getElementById("selectOption");
-        var options = table_data += cell_data[cell_count];
+        table_data += '<td>' + cell_data[cell_count]+'</td>';
 
-        for(var i = 0; i < options.length; i++){
-          var opt = options[i];
-          var el = document.createElement("option");
-          el.textContent = opt;
-          select.appendChild(el);
-        }
-      }
+        // for(var i = 0; i < options.length; i++){
+        //   var opt = options[i];
+        //   var el = document.createElement("option");
+        //   el.textContent = opt;
+        //   select.appendChild(el);
+        // }
+      //}
      }
      table_data += '</tr>';
     }

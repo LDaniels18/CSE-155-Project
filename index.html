@@ -11,11 +11,19 @@
    <div class="table-responsive">
     <h1 align="center">Test Data</h1>
     <br/>
-    <select id="selectOption">
-      <option>Choose a currency</option>
-  </select>
-    <br/>
+    <select id="currency1">
+      <option>Choose a currency you would like to from</option>
+   </select>
+    
+    <select id="currency2">
+      <option>Choose a currency you would like to convert to</option>
+   </select>
+   <br/>
+   <input type="number" id="currencyAmount" placeholder="Please input currency amount">
+   <button id="convertButton">Convert</button>
    </div>
+   <br/>
+   <output>Currency conversion result</output>
   </div>
   <div>
   </div>
@@ -34,59 +42,32 @@
       //count = 0 includes table titles
     for(var count = 1; count<currency_data.length; count++)
     {
-     var cell_data = currency_data[count].split(",");
-     //table_data += '<tr>';
+      var cell_data = currency_data[count].split(",");
       //setting cell_cout = 0 includes Currency_id
-      var opt = currency_data[count];
-      var select = document.getElementById("selectOption");
-      var el = document.createElement("option");
-      el.textContent = opt;
-      select.appendChild(el);
      for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
      {
-      // if(count === 0)
-      // {
-      //   //'Currency_id | Currency_Type | USD_Rate'
-      //  table_data += '<th>'+cell_data[cell_count]+'</th>';
-      // }
-      // else
-      // {
         //actual cell data
-        var select = document.getElementById("selectOption");
-        table_data += '<td>' + cell_data[cell_count]+'</td>';
-
-        // for(var i = 0; i < options.length; i++){
-        //   var opt = options[i];
-        //   var el = document.createElement("option");
-        //   el.textContent = opt;
-        //   select.appendChild(el);
-        // }
-      //}
+        var opt = currency_data[count];
+        var currency1 = document.getElementById("currency1");
+        //var currency2 = document.getElementById("currency2");
+        var el = document.createElement("option");
+        el.textContent = opt;
+        currency1.appendChild(el);
+        //currency2.appendChild(el);
      }
-     table_data += '</tr>';
+     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
+     {
+        //actual cell data
+        var opt = currency_data[count];
+        //var currency1 = document.getElementById("currency1");
+        var currency2 = document.getElementById("currency2");
+        var el = document.createElement("option");
+        el.textContent = opt;
+        //currency1.appendChild(el);
+        currency2.appendChild(el);
+     }
     }
-    table_data += '</table>';
-    $('#currency_table').html(table_data);
    }
   });
 
-  // $.get(csv_path, function(data){
-  //   var csv_string = data;
-  // });
-
-  // (function(){
-  //   var csv_path = "Currency.csv";
-  //   var renderCSVDropdown = function(csv){
-  //     var dropdown = $('select#my-dropdown');
-  //     for(var i = 0; i < csv.length; i++){
-  //       var record = csv[i];
-  //       var entry = $('<option>').attr('value', record.someProperty);
-  //         dropdown.append(entry);
-  //     }
-  //   };
-  //   $.get(csv_path, function(data){
-  //     var csv = CSVToArray(data);
-  //     renderCSVDropdown(data);
-  //   });
-  // }());
 </script>

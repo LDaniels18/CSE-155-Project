@@ -5,7 +5,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
+  <link rel="stylesheet" href="numpad-dark.css"/>
+  <script src="numpad.js"></script>
+</head>
  <body>
   <div class="container">
    <div class="table-responsive">
@@ -14,16 +16,18 @@
     <select id="currency1">
       <option>Choose a currency you would like to from</option>
    </select>
-    
+    <br/>
     <select id="currency2">
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
-   <input type="number" id="currencyAmount" placeholder="Please input currency amount">
-   <button id="convertButton">Convert</button>
+   <input type="number" id="currency1Amount" placeholder="Please input currency amount">
+ 
+   <br/>
+   <input type="number" id="currency2Amount" placeholder="Please input currency amount">
+
    </div>
    <br/>
-   <output>Currency conversion result</output>
   </div>
   <div>
   </div>
@@ -69,5 +73,42 @@
     }
    }
   });
+
+
+  window.addEventListener("load", () => {
+      // (C1) BASIC NUMPAD
+      numpad.attach({target: document.getElementById("currency1Amount")});
+
+      // (C2) WITH ALL POSSIBLE OPTIONS
+      numpad.attach({
+        target: document.getElementById("currency1Amount"),
+        max: 10, // MAX 10 DIGITS
+        decimal: false, // NO DECIMALS ALLOWED
+        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
+          alert("Currency 1 set.");
+        },
+        oncancel : () => { // CALL THIS AFTER CANCELING
+          alert("Currency 1 canceled.");
+        }
+      });
+    });
+    
+    window.addEventListener("load", () => {
+      // (C1) BASIC NUMPAD
+      numpad.attach({target: document.getElementById("currency2Amount")});
+
+      // (C2) WITH ALL POSSIBLE OPTIONS
+      numpad.attach({
+        target: document.getElementById("currency2Amount"),
+        max: 10, // MAX 10 DIGITS
+        decimal: false, // NO DECIMALS ALLOWED
+        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
+          alert("Currency 2 set.");
+        },
+        oncancel : () => { // CALL THIS AFTER CANCELING
+          alert("Currency 2 canceled.");
+        }
+      });
+    });
 
 </script>

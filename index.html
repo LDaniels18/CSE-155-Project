@@ -51,11 +51,11 @@
    <div class="table-responsive">
     <h1 align="center">Test Data</h1>
     <br/>
-    <select id="currency1">
+    <select id="currency1" ondblclick="myFunc()">
       <option>Choose a currency you would like to start from</option>
    </select>
 
-    <select id="currency2">
+    <select id="currency2" ondblclick="myFunc()">
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
@@ -71,6 +71,10 @@
 </html>
 
 <script>
+
+function myFunc(){
+
+}
 
   $.ajax({
    url:"Currency.csv",

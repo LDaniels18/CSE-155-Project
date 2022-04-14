@@ -1,17 +1,84 @@
-<html lang="en">
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>CSV File to HTML Table Using AJAX jQuery</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ </head>
+ <body>
+  <div class="container">
+   <div class="table-responsive">
+    <h1 align="center">Test Data</h1>
+    <br/>
+    <select id="selectOption">
+      <option>Choose a currency</option>
+  </select>
+    <br/>
+    <div id="currency_table">
+    </div>
+   </div>
+  </div>
+  <div>
+  </div>
+  <input id="demo" placeholder="Please Select ..." />
+ </body>
+</html>
 
-<head>
-    
-    <title>Currency Converter For Blind People</title>
+<script>
 
-</head>
+  $.ajax({
+   url:"Currency.csv",
+   dataType:"text",
+   success:function(data)
+   {
+    var currency_data = data.split(/\r?\n|\r/);
+    var table_data = '<table class="table table-bordered table-striped">';
+      //count = 0 includes table titles
+    for(var count = 1; count<currency_data.length; count++)
+    {
+     var cell_data = currency_data[count].split(",");
+     table_data += '<tr>';
+      //setting cell_cout = 0 includes Currency_id
+     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
+     {
+        //actual cell data
+        var select = document.getElementById("selectOption");
+        table_data += cell_data[cell_count];
 
-<body>
+        for(var i = 0; i < cell_data.length; i++) {
+          var opt = table_data += cell_data[i];
+          var el = document.createElement("option");
+          el.textContent.ondbclick() = opt;
+          el.value.ondbclick() = opt;
+          select.appendChild(el);
+        }
+      }
+     
+     table_data += '</tr>';
+    }
+    table_data += '</table>';
+    $('#currency_table').html(table_data);
+   }
+  });
 
-    <h1>Sample Header</h1>
+  // $.get(csv_path, function(data){
+  //   var csv_string = data;
+  // });
 
-    <p>A Sample Paragraph</p>
-
-</body>
-
-</html> 
+  // (function(){
+  //   var csv_path = "Currency.csv";
+  //   var renderCSVDropdown = function(csv){
+  //     var dropdown = $('select#my-dropdown');
+  //     for(var i = 0; i < csv.length; i++){
+  //       var record = csv[i];
+  //       var entry = $('<option>').attr('value', record.someProperty);
+  //         dropdown.append(entry);
+  //     }
+  //   };
+  //   $.get(csv_path, function(data){
+  //     var csv = CSVToArray(data);
+  //     renderCSVDropdown(data);
+  //   });
+  // }());
+</script>

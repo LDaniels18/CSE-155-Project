@@ -1,0 +1,41 @@
+
+.md-stepper-np .md-demo {
+    text-align: center;
+}
+
+.md-stepper-np .md-demo .mbsc-desc {
+    font-size: 16px;
+    padding-bottom: 16px;
+}
+
+.md-stepper-np .md-demo .mbsc-btn {
+    margin-top: 36px;
+}
+
+.md-stepper-np .md-title {
+    margin-top: 40px;
+}
+
+.md-stepper-np {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+}
+
+.md-stepper-np .mbsc-segmented {
+    left: 50%;
+    margin-left: -122px;
+}
+
+.md-stepper-np .mbsc-stepper .mbsc-segmented-item {
+    width: 4.375em;
+}
+
+.md-stepper-np .mbsc-stepper .mbsc-segmented-item:nth-child(3) {
+    width: 6.25em;
+}
+
+.md-stepper-np .mbsc-stepper input {
+    left: 5em;
+    width: 7.1428em;
+}

@@ -4,6 +4,7 @@
 const csv = require('csv-parser'); //package to help with the parsing(formating and reading) of csv data
 const fs = require('fs'); //file system module -- package
 const express = require('express'); //a popular package that helps with web framework
+const PORT = 9999; //a contant port variable
 
 //variables
 const results = []; //an array that is referenced and can be altered by adding or deleting specific values
@@ -54,6 +55,20 @@ app.get("/", function (req, res) {
 });
 
 //app will then listen for these values and output 
-app.listen(5000, function () {
-  console.log(`Server is up and running on 5000 ...`);
+app.listen(PORT, function(err){
+
+  if(err){ //if error function is true, meaning we are in a  different port or setup was bad
+    console.log("Error in server setup...");
+  }else{
+  console.log("Server is up and running on port:", PORT); //the ideal output
+  }
 });
+
+// process.once('SIGUSR2', function () {
+//   process.kill(process.pid, 'SIGUSR2');
+// });
+
+// process.on('SIGINT', function () {
+//   // this is only called on ctrl+c, not restart
+//   process.kill(process.pid, 'SIGINT');
+// });

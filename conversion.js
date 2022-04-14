@@ -1,31 +1,37 @@
-const csv = require('csv-parser');
-const fs = require('fs');
-const express = require('express');
+//--External Javascript file to handle currency Conversions--
 
-const results = [];
-var number1; 
+//packages - const = constant refernce to a varaiable (so use when making functions)
+const csv = require('csv-parser'); //package to help with the parsing(formating and reading) of csv data
+const fs = require('fs'); //file system module -- package
+const express = require('express'); //a popular package that helps with web framework
+
+//variables
+const results = []; //an array that is referenced and can be altered by adding or deleting specific values
+var number1;
 var number2;
 
-const ps = require("prompt-sync");
+const ps = require("prompt-sync"); //js package
 const prompt = ps();
 
+// similar to saying printf(); 
 let currency1 = prompt("Enter your desired currency: ")
 let currency2 = prompt("Enter the currency you want to convert: ");
 var amount = prompt("Enter the amount of currency you want to convert: ");
 
+// Reading the csv file: 
 fs.createReadStream('Currency Database.csv')
-  .pipe(csv())
+  .pipe(csv())  //perfroming functions without having to call so many at once: 
   .on('data', (data) => {
     if (data['Currency_Type'] === currency1) {
-      results.push(data);
+      results.push(data); //
     }
-  })
+  }) //data = some logic that will check the csv files currency types and compare to the desired currency.. then push the currency on to the data variable
   .on('end', () => {
     global.number1 = results[0].USD_Rate;
   })
 
 
-  fs.createReadStream('Currency Database.csv')
+fs.createReadStream('Currency Database.csv') //reads fromt the CSV file
   .pipe(csv())
   .on('data', (data) => {
     if (data['Currency_Type'] === currency2) {
@@ -36,9 +42,9 @@ fs.createReadStream('Currency Database.csv')
     global.number2 = results[1].USD_Rate;
   })
 
-const app = express();
+const app = express(); //will controll web app processes and allow us to see output. 
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
 
   var result = (amount * global.number1) / global.number2;
 
@@ -47,6 +53,7 @@ app.get("/", function(req, res) {
   res.send(result + "");
 });
 
-app.listen(5000, function() {
+//app will then listen for these values and output 
+app.listen(5000, function () {
   console.log(`Server is up and running on 5000 ...`);
 });

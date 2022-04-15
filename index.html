@@ -49,7 +49,7 @@
    
   <div class="container">
    <div class="table-responsive">
-    <h1 align="center">Test Data</h1>
+    <h1 align="center">Testing Page</h1>
     <br/>
     <select id="currency1" ondblclick="myFunc()">
       <option>Choose a currency you would like to start from: </option>
@@ -138,26 +138,26 @@ function myFunc(){
       });
     });
 
-    window.addEventListener("load", () => {
-      // (C1) BASIC NUMPAD
-      numpad.attach({target: document.getElementById("currency2Amount")});
-     // numpad.attach({target2: document.getElementById("currency2Amount")});
+    // window.addEventListener("load", () => {
+    //   // (C1) BASIC NUMPAD
+    //   numpad.attach({target: document.getElementById("currency2Amount")});
+    //  // numpad.attach({target2: document.getElementById("currency2Amount")});
 
-      // (C2) WITH ALL POSSIBLE OPTIONS
-      numpad.attach({
-        target: document.getElementById("currency2Amount"),
-       // target2: document.getElementById("currency2Amount"),
+    //   // (C2) WITH ALL POSSIBLE OPTIONS
+    //   numpad.attach({
+    //     target: document.getElementById("currency2Amount"),
+    //    // target2: document.getElementById("currency2Amount"),
 
-        max: 10, // MAX 10 DIGITS
-        decimal: false, // NO DECIMALS ALLOWED
-        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-          alert("Currency 2 set.");
-        },
-        oncancel : () => { // CALL THIS AFTER CANCELING
-          alert("Currency 2 canceled.");
-        }
-      });
-    });
+    //     max: 10, // MAX 10 DIGITS
+    //     decimal: false, // NO DECIMALS ALLOWED
+    //     onselect : () => { // CALL THIS AFTER SELECTING NUMBER
+    //       alert("Currency 2 set.");
+    //     },
+    //     oncancel : () => { // CALL THIS AFTER CANCELING
+    //       alert("Currency 2 canceled.");
+    //     }
+    //   });
+    // });
  
 
 

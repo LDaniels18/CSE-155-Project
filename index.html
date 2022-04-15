@@ -15,19 +15,13 @@
   color:#333;
 } 
 #currency1{
-<<<<<<< HEAD
   font-size: 36px;
-=======
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
     width: 450px;
     height: 150px;
 }
 #currency2{
-<<<<<<< HEAD
   font-size: 36px;
-=======
 
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
     width: 450px;
     height: 150px;
 }
@@ -62,16 +56,12 @@
     <select id="currency1" ondblclick="myFunc()">
       <option>Choose a currency you would like to start from</option>
    </select>
-<<<<<<< HEAD
 <style ></style>
-=======
 
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
     <select id="currency2" ondblclick="myFunc()">
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
-<<<<<<< HEAD
    <br/>
    <br/>
    <br/>
@@ -79,8 +69,6 @@
    <br/>
    <br/>
    <br/>
-=======
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
    <input type="number" id="currency1Amount" placeholder="Please input currency amount">
    <input type="number" id="currency2Amount"  placeholder="Currency output">
 
@@ -148,12 +136,6 @@ function myFunc(){
         target: document.getElementById("currency1Amount"),
         max: 10, // MAX 10 DIGITS
         decimal: false, // NO DECIMALS ALLOWED
-        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-          alert("Currency 1 set.");
-        },
-        oncancel : () => { // CALL THIS AFTER CANCELING
-          alert("Currency 1 canceled.");
-        }
       });
     });
  

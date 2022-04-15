@@ -103,12 +103,6 @@ var numpad = {
   // (C) ATTACH NUMPAD TO INPUT FIELD
   attach: (opt) => {
   // OPTIONS
-  //  target: required, target field.
-  //  max: optional, maximum number of characters. Default 255.
-  //  decimal: optional, allow decimal? Default true.
-  //  onselect: optional, function to call after selecting number.
-  //  oncancel: optional, function to call after canceling.
-
     // (C1) DEFAULT OPTIONS
     if (opt.max === undefined) { opt.max = 255; }
     if (opt.decimal === undefined) { opt.decimal = true; }
@@ -157,5 +151,28 @@ var numpad = {
     if (manual) { numpad.nowTarget.dispatchEvent(new Event("numpadcx")); }
     numpad.hwrap.classList.remove("open");
   }
+};
+
+var displayCurrency = {
+  attach: (opt) => {
+    // OPTIONS
+      // (C1) DEFAULT OPTIONS
+      if (opt.max === undefined) { opt.max = 255; }
+      if (opt.decimal === undefined) { opt.decimal = true; }
+  
+      // (C2) GET + SET TARGET OPTIONS
+    
+      opt.target.dataset.max = opt.max;
+      opt.target.dataset.decimal = opt.decimal;
+      opt.target.addEventListener("click", () => { numpad.show(opt.target); });
+  
+      // (C3) ATTACH CUSTOM LISTENERS
+      if (opt.onselect) {
+        opt.target.addEventListener("numpadok", opt.onselect);
+      }
+      if (opt.oncancel) {
+        opt.target.addEventListener("numpadcx", opt.oncancel);
+      }
+    }
 };
 window.addEventListener("DOMContentLoaded", numpad.init);

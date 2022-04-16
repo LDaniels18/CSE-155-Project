@@ -1,142 +1,195 @@
 <!DOCTYPE html>
 <html>
- <head>
-   <style> 
-  .table_responsive {
-  padding:0 30px 0 10px;
-  background: #333;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  flex-wrap:wrap;
-  padding:0;
-  margin:0;
-  font-family: sans-serif;
-  color:#333;
-} 
-#currency1{
-    width: 450px;
-    height: 150px;
-}
-#currency2{
-    width: 450px;
-    height: 150px;
-}
-#currency1Amount{
-    width: 450px;
-    height: 75px;
-}
-#currency2Amount{
-    width: 450px;
-    height: 75px;
-}
-.table_responsive {
-   -webkit-appearance: menulist-button;
-   height: 50px;
-}
+
+<head>
+  <meta charset="utf-8">
+  <style>
+    body{
+      margin: 0;
+      padding: 0;
+      font-family: 'Times New Roman', Times, serif;
+    }
+    .container{
+      position: relative;
+      width: 0px;
+      height: 0px;
+      /*  */
+      margin: 0px auto;
+      /* Margin: Space around an HTML Element */
+    }
+    .output{
+      padding: 0 30px 0 10px;
+      position: relative;
+      margin: 315px auto;
+      /*display: flex;*/
+      justify-content: center;
+      align-items: center;
+      font-family: sans-serif;
+
+    }
+
+    .table_responsive {
+      padding: 0 30px 0 10px;
+      background: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 0;
+      margin: 0;
+      font-family: sans-serif;
+      color: #333;
+    }
+
+    #currency1 {
+      width: 450px;
+      height: 150px;
+    }
+
+    #currency2 {
+      width: 450px;
+      height: 150px;
+    }
+
+    #currency1Amount {
+      width: 450px;
+      height: 75px;
+    }
+
+    #currency2Amount {
+      width: 450px;
+      height: 75px;
+    }
+
+    .table_responsive {
+      -webkit-appearance: menulist-button;
+      height: 50px;
+    }
   </style>
- 
- <title>CSV File to HTML Table Using AJAX jQuery</title>
+
+  <title>CSV File to HTML Table Using AJAX jQuery</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="numpad-dark.css"/>
-  <script src="numpad.js"></script> 
+  <link rel="stylesheet" href="numpad-dark.css" />
+  <script src="numpad.js"></script>
   <script src="conversion.js"></script>
-  
-</head>
- <body>
-   
-  <div class="container">
-   <div class="table-responsive">
-    <h1 align="center">Testing Page</h1>
-    <br/>
-    <select id="currency1" ondblclick="myFunc()">
-      <option>Choose a currency you would like to start from: </option>
-   </select>
-    <select id="currency2" ondblclick="myFunc()">
-      <option>Choose a currency you would like to convert to: </option>
-   </select>
-   <br/>
-   <input type="number" id="currency1Amount" placeholder="Please input currency amount">
-   <input type="number" id="currency2Amount"  placeholder="Currency output">
 
-   </div>
-   <br/>
+</head>
+
+<body>
+
+  <!-- refering to the entire page of tables that will be used -->
+  <div class="container">
+    <!-- a specific class to refer to the 2 table containing CSV data -->
+    <div class="table-responsive">
+      <!-- Header for the Page -->
+      <h1 align="center">Testing Page</h1>
+      <br />
+      <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
+      <select id="currency1" ondblclick="myFunc()">
+        <!-- option allows for a text line to act as a place holder -->
+        <option>Choose a currency you would like to start from: </option>
+      </select>
+      <select id="currency2" ondblclick="myFunc()">
+        <option>Choose a currency you would like to convert to: </option>
+      </select>
+      <br />
+      <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
+      <input type="number" id="currency1Amount" placeholder="Please input currency amount">
+
+      <input type="number" id="currency2Amount" placeholder="Currency output">
+
+
+
+    </div>
+    <br />
   </div>
   <div>
   </div>
- </body>
+  
+  <!-- sperating both divsions -->
+  <br />
+  <!-- sperating both divsions -->
+
+  <div class="output">
+    <!-- Testing some stuff out... especially for output of conversion -->
+  <h1 align = "center">Output Testing</h1>
+  <p id="demo" align = "center"></p>
+
+  <script>
+    document.getElementById("demo").innerHTML = 5 + 6;
+  </script>
+  </div>
+
+  
+</body>
+
 </html>
 
 <script>
 
-function myFunc(){
-
-}
+  function myFunc() {  //logic pertaining to the tables:
+  }
 
   $.ajax({
-   url:"Currency.csv",
-   dataType:"text",
+    url: "Currency.csv",
+    dataType: "text",
 
-   success:function(data)
-   {
-    var currency_data = data.split(/\r?\n|\r/);
-    var table_data = '<table class="table table-bordered table-striped">';
+    success: function (data) {
+      var currency_data = data.split(/\r?\n|\r/);
+      var table_data = '<table class="table table-bordered table-striped">';
       //count = 0 includes table titles
-    for(var count = 1; count<currency_data.length; count++)
-    {
-      var cell_data = currency_data[count].split(",");
-      //setting cell_cout = 0 includes Currency_id
-     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
-     {
-        //actual cell data
-        var opt = currency_data[count];
-        var currency1 = document.getElementById("currency1");
-        //var currency2 = document.getElementById("currency2");
-        var el = document.createElement("option");
-        
-        el.textContent = opt;
-        currency1.appendChild(el);
-        //currency2.appendChild(el);
-     }
-     
-     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
-     {
-        //actual cell data
-        var opt = currency_data[count];
-        //var currency1 = document.getElementById("currency1");
-        var currency2 = document.getElementById("currency2");
-        var el = document.createElement("option");
-        el.textContent = opt;
-        //currency1.appendChild(el);
-        currency2.appendChild(el);
-     }
+      for (var count = 1; count < currency_data.length; count++) {
+        var cell_data = currency_data[count].split(",");
+        //setting cell_cout = 0 includes Currency_id
+        for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+          //actual cell data
+          var opt = currency_data[count]; //element of data carried by the currency_data[] array
+          var currency1 = document.getElementById("currency1"); //
+          //var currency2 = document.getElementById("currency2");
+          var el = document.createElement("option");
+
+          el.textContent = opt;
+          currency1.appendChild(el);
+          //currency2.appendChild(el);
+        }
+
+        for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+          //actual cell data
+          var opt = currency_data[count];
+          //var currency1 = document.getElementById("currency1");
+          var currency2 = document.getElementById("currency2");
+          var el = document.createElement("option");
+          el.textContent = opt;
+          //currency1.appendChild(el);
+          currency2.appendChild(el);
+        }
+      }
     }
-   }
   });
 
 
   window.addEventListener("load", () => {
-      // (C1) BASIC NUMPAD
-      numpad.attach({target: document.getElementById("currency1Amount")});
-     // numpad.attach({target2: document.getElementById("currency2Amount")});
+    // (C1) BASIC NUMPAD
+    numpad.attach({ target: document.getElementById("currency1Amount") });
+    // numpad.attach({target2: document.getElementById("currency2Amount")});
 
-      // (C2) WITH ALL POSSIBLE OPTIONS
-      numpad.attach({
-        target: document.getElementById("currency1Amount"),
-       // target2: document.getElementById("currency2Amount"),
+    // (C2) WITH ALL POSSIBLE OPTIONS
+    numpad.attach({
+      target: document.getElementById("currency1Amount"),
+      // target2: document.getElementById("currency2Amount"),
 
-        max: 10, // MAX 10 DIGITS
-        decimal: false, // NO DECIMALS ALLOWED
-        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-          alert("Currency 1 set.");
-        },
-        oncancel : () => { // CALL THIS AFTER CANCELING
-          alert("Currency 1 canceled.");
-        }
-      });
+      max: 10, // MAX 10 DIGITS
+      decimal: false, // NO DECIMALS ALLOWED
+      onselect: () => { // CALL THIS AFTER SELECTING NUMBER
+        alert("Currency 1 set.");
+      },
+      oncancel: () => { // CALL THIS AFTER CANCELING
+        alert("Currency 1 canceled.");
+      }
     });
+  });
 
     // window.addEventListener("load", () => {
     //   // (C1) BASIC NUMPAD
@@ -158,7 +211,7 @@ function myFunc(){
     //     }
     //   });
     // });
- 
+
 
 
 </script>

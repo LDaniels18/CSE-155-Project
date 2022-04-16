@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>CSV File to HTML Table Using AJAX jQuery</title>
+  <title>Currency Converter</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -15,21 +15,28 @@
     <br/>
     <select id="currency1">
       <option>Choose a currency you would like to from</option>
-   </select>
-    <br/>
+    </select>
     <select id="currency2">
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
    <input type="number" id="currency1Amount" placeholder="Please input currency amount">
- 
-   <br/>
    <input type="number" id="currency2Amount" placeholder="Please input currency amount">
 
    </div>
    <br/>
   </div>
-  <div>
+
+  <div id="numWrap">
+    <div id="numPad" >
+      <input id="numDisplay" type="text" disabled="">
+      <div id="numBWrap" >
+        <div class="num">7</div> <div class="num">8</div> <div class="num">9</div> <div class="del">⤆</div>
+        <div class="num">4</div> <div class="num">5</div> <div class="num">6</div> <div class="clr">C</div>
+        <div class="num">1</div> <div class="num">2</div> <div class="num">3</div> <div class="cx">X</div>
+        <div class="zero">0</div> <div class="dot">.</div> <div class="ok">✔</div>
+      <div>
+    </div>
   </div>
  </body>
 </html>
@@ -82,14 +89,6 @@
       // (C2) WITH ALL POSSIBLE OPTIONS
       numpad.attach({
         target: document.getElementById("currency1Amount"),
-        max: 10, // MAX 10 DIGITS
-        decimal: false, // NO DECIMALS ALLOWED
-        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-          alert("Currency 1 set.");
-        },
-        oncancel : () => { // CALL THIS AFTER CANCELING
-          alert("Currency 1 canceled.");
-        }
       });
     });
     
@@ -100,14 +99,6 @@
       // (C2) WITH ALL POSSIBLE OPTIONS
       numpad.attach({
         target: document.getElementById("currency2Amount"),
-        max: 10, // MAX 10 DIGITS
-        decimal: false, // NO DECIMALS ALLOWED
-        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-          alert("Currency 2 set.");
-        },
-        oncancel : () => { // CALL THIS AFTER CANCELING
-          alert("Currency 2 canceled.");
-        }
       });
     });
 

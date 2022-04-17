@@ -4,7 +4,6 @@
    <style> 
 
 #currency1{
-<<<<<<< HEAD
   text-align: center;
 
     width: 560px;
@@ -16,17 +15,6 @@ text-align: center;
     width: 560px;
     height: 550px;
     font-size: 30px;
-=======
-  font-size: 36px;
-    width: 450px;
-    height: 150px;
-}
-#currency2{
-  font-size: 36px;
-
-    width: 450px;
-    height: 150px;
->>>>>>> e5e14ce7281f2ec686abc2e7fa35fb29455d8a51
 }
 #currency1Amount{
     width: 560px;
@@ -85,13 +73,7 @@ display:none;
     <select ondblclick="click()" id="currency1" multiple = "multiple">
       <option>Choose a currency you would like to start from</option>
    </select>
-<<<<<<< HEAD
     <select ondblclick="click()" id="currency2" multiple = "multiple">
-=======
-<style ></style>
-
-    <select id="currency2" ondblclick="myFunc()">
->>>>>>> e5e14ce7281f2ec686abc2e7fa35fb29455d8a51
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
@@ -102,12 +84,9 @@ display:none;
    <br/>
    <br/>
    <br/>
-<<<<<<< HEAD
    <br/>
    <br/>
    <br/>
-=======
->>>>>>> e5e14ce7281f2ec686abc2e7fa35fb29455d8a51
    <input type="number" id="currency1Amount" placeholder="Please input currency amount">
    <input type="number" id="currency2Amount"  placeholder="Currency output">
 
@@ -187,6 +166,12 @@ var hideThis = function(buttonId){
         target: document.getElementById("currency1Amount"),
         max: 10, // MAX 10 DIGITS
         decimal: false, // NO DECIMALS ALLOWED
+        onselect : () => { // CALL THIS AFTER SELECTING NUMBER
+          alert("Currency 1 set.");
+        },
+        oncancel : () => { // CALL THIS AFTER CANCELING
+          alert("Currency 1 canceled.");
+        }
       });
     });
  

@@ -2,47 +2,54 @@
 <html>
  <head>
    <style> 
-  .table_responsive {
-  padding:0 30px 0 10px;
-  background: #333;
-  display:flex;
-  justify-content: center;
-  align-items:center;
-  flex-wrap:wrap;
-  padding:0;
-  margin:0;
-  font-family: sans-serif;
-  color:#333;
-} 
+
 #currency1{
-<<<<<<< HEAD
-  font-size: 36px;
-=======
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
-    width: 450px;
-    height: 150px;
+  text-align: center;
+
+    width: 560px;
+    height: 550px;
+    font-size: 30px;
 }
 #currency2{
-<<<<<<< HEAD
-  font-size: 36px;
-=======
-
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
-    width: 450px;
-    height: 150px;
+text-align: center;
+    width: 560px;
+    height: 550px;
+    font-size: 30px;
 }
 #currency1Amount{
-    width: 450px;
+    width: 560px;
     height: 75px;
 }
 #currency2Amount{
-    width: 450px;
+    font: Arial;
+    width: 560px;
     height: 75px;
 }
-.table_responsive {
-   -webkit-appearance: menulist-button;
-   height: 50px;
+#button1 {
+  color: rgb(221, 24, 24);
+  padding: 262px 157px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  position: fixed;
+  cursor: pointer;
+  display: block;
 }
+#button2 {
+  color: rgb(221, 24, 24);
+  padding: 262px 157px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  right: 406px;
+  position: fixed;
+  cursor: pointer;
+  display: block;
+}
+.hide{
+display:none;
+}
+
   </style>
  
  <title>CSV File to HTML Table Using AJAX jQuery</title>
@@ -59,19 +66,17 @@
    <div class="table-responsive">
     <h1 align="center">Test Data</h1>
     <br/>
-    <select id="currency1" ondblclick="myFunc()">
+    
+    <button id="button1" ondblclick="hideThis('button1')">Double-click to access Currency 1</button>
+    <button id="button2" ondblclick="hideThis('button2')">Double-click to access Currency 2</button>
+
+    <select ondblclick="click()" id="currency1" multiple = "multiple">
       <option>Choose a currency you would like to start from</option>
    </select>
-<<<<<<< HEAD
-<style ></style>
-=======
-
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
-    <select id="currency2" ondblclick="myFunc()">
+    <select ondblclick="click()" id="currency2" multiple = "multiple">
       <option>Choose a currency you would like to convert to</option>
    </select>
    <br/>
-<<<<<<< HEAD
    <br/>
    <br/>
    <br/>
@@ -79,8 +84,9 @@
    <br/>
    <br/>
    <br/>
-=======
->>>>>>> 1c909bb6f0d959e7d926ddc707edeb2a97930182
+   <br/>
+   <br/>
+   <br/>
    <input type="number" id="currency1Amount" placeholder="Please input currency amount">
    <input type="number" id="currency2Amount"  placeholder="Currency output">
 
@@ -94,15 +100,29 @@
 
 <script>
 
-function myFunc(){
-
-}
+var hideThis = function(buttonId){
+  if (buttonId == 'button1'){
+  document.getElementById('button1').style.display = 'none';
+    if (document.getElementById('button2').style.display == 'none'){
+      document.getElementById('button2').style.display = ''
+    }
+  }
+  else {
+  document.getElementById('button2').style.display = 'none';
+    if (document.getElementById('button1').style.display == 'none'){
+      document.getElementById('button1').style.display = ''
+    }
+  }
+};
 
   $.ajax({
+  
    url:"Currency.csv",
-   dataType:"text",
+   dataType:"text",    
+
    success:function(data)
    {
+
     var currency_data = data.split(/\r?\n|\r/);
     var table_data = '<table class="table table-bordered table-striped">';
       //count = 0 includes table titles
@@ -117,12 +137,10 @@ function myFunc(){
         var currency1 = document.getElementById("currency1");
         //var currency2 = document.getElementById("currency2");
         var el = document.createElement("option");
-        
         el.textContent = opt;
         currency1.appendChild(el);
         //currency2.appendChild(el);
-     }
-     
+     }   
      for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
      {
         //actual cell data

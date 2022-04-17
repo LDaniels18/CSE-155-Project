@@ -28,7 +28,7 @@
     }
 
     .numContainer {
-      margin-top: 225px;
+      margin-top: -65px;
       /*background-position-y: center;*/
     }
 
@@ -106,20 +106,23 @@
   </div>
   <br />
   <!-- sperating both divsions -->
+
+  <!-- a seperate class for the input box, so it can be aligned properly -->
   <div class="numContainer">
     <p align="center">
       <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
       <input type="number" id="currency1Amount" placeholder="Please input currency amount">
     </p>
-    <!-- <input type="number" id="currency2Amount" placeholder="Currency output"> -->
   </div>
   <!-- sperating both divsions -->
   <br />
+
+  <!-- Seperate Class for the output, so it can be aligned properly -->
   <div class="output">
-    <!-- Testing some stuff out... especially for output of conversion -->
     <h1 align="center">Output Testing</h1>
     <p id="demo" align="center"></p>
-
+    <!-- <input type="number" id="currency2Amount" placeholder="Currency output"> -->
+    <!-- Testing some stuff out using javascipt... especially for output of conversion -->
     <script>
       document.getElementById("demo").innerHTML = 5 + 6;
     </script>
@@ -132,10 +135,9 @@
 
 <script>
 
-  function myFunc() {  //logic pertaining to the tables:
-  }
-
-  $.ajax({
+  /////////////////////////////////////////////////////////////
+  function myFunc() {  //logic pertaining to the tables, to output each line:
+  }$.ajax({
     url: "Currency.csv",
     dataType: "text",
 
@@ -143,21 +145,19 @@
       var currency_data = data.split(/\r?\n|\r/);
       var table_data = '<table class="table table-bordered table-striped">';
       //count = 0 includes table titles
-      for (var count = 1; count < currency_data.length; count++) {
-        var cell_data = currency_data[count].split(",");
-        //setting cell_cout = 0 includes Currency_id
-        for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
-          //actual cell data
-          var opt = currency_data[count]; //element of data carried by the currency_data[] array
-          var currency1 = document.getElementById("currency1"); //
-          //var currency2 = document.getElementById("currency2");
-          var el = document.createElement("option");
+      for (var count = 1; count < currency_data.length; count++){ //traversing the list of lines from the csv
+        var cell_data = currency_data[count].split(","); //each individual line
+          for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+            //actual cell data
+            var opt = currency_data[count]; //element of data carried by the currency_data[] array
+            var currency1 = document.getElementById("currency1"); //the element created in the body section of the HTML File
+            var el = document.createElement("option");//
 
-          el.textContent = opt;
-          currency1.appendChild(el);
-          //currency2.appendChild(el);
-        }
-
+            el.textContent = opt;
+            currency1.appendChild(el);
+            //currency2.appendChild(el);
+          }
+       
         for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
           //actual cell data
           var opt = currency_data[count];
@@ -168,10 +168,12 @@
           //currency1.appendChild(el);
           currency2.appendChild(el);
         }
+
       }
     }
   });
 
+  ///////////////////////////////////////////////////////////////
 
   window.addEventListener("load", () => {
     // (C1) BASIC NUMPAD
@@ -193,27 +195,6 @@
       }
     });
   });
-
-    // window.addEventListener("load", () => {
-    //   // (C1) BASIC NUMPAD
-    //   numpad.attach({target: document.getElementById("currency2Amount")});
-    //  // numpad.attach({target2: document.getElementById("currency2Amount")});
-
-    //   // (C2) WITH ALL POSSIBLE OPTIONS
-    //   numpad.attach({
-    //     target: document.getElementById("currency2Amount"),
-    //    // target2: document.getElementById("currency2Amount"),
-
-    //     max: 10, // MAX 10 DIGITS
-    //     decimal: false, // NO DECIMALS ALLOWED
-    //     onselect : () => { // CALL THIS AFTER SELECTING NUMBER
-    //       alert("Currency 2 set.");
-    //     },
-    //     oncancel : () => { // CALL THIS AFTER CANCELING
-    //       alert("Currency 2 canceled.");
-    //     }
-    //   });
-    // });
 
 
 

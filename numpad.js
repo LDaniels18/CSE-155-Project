@@ -1,21 +1,19 @@
 var numpad = {
-  // (A) CREATE NUMPAD HTML
   hwrap: null, // numpad wrapper container
   hpad: null, // numpad itself
   hdisplay: null, // number display
   hbwrap: null, // buttons wrapper
   hbuttons: {}, // individual buttons
   init: () => {
-    // (A1) WRAPPER
     numpad.hwrap = document.createElement("div");
     //numpad.hwrap.id = "numWrap";
 
-    // (A2) ENTIRE NUMPAD ITSELF
+    // Numpad itself
     numpad.hpad = document.createElement("div");
     numpad.hpad.id = "numPad";
     numpad.hwrap.appendChild(numpad.hpad);
 
-    // (A3) DISPLAY
+    // Display
     numpad.hdisplay = document.createElement("input");
     numpad.hdisplay.id = "numDisplay";
     numpad.hdisplay.type = "text";
@@ -45,17 +43,16 @@ var numpad = {
     // 4 TO 6
     for (let i=4; i<=6; i++) { buttonator(i, "num", () => { numpad.digit(i); }); }
     // CLEAR
-    buttonator("C", "clr", numpad.reset);
+    buttonator("Clear", "clr", numpad.reset);
     // 1 to 3
     for (let i=1; i<=3; i++) { buttonator(i, "num", () => { numpad.digit(i); }); }
-    // CANCEL
-    buttonator("&#10006;", "cx", () => { numpad.hide(1); });
+    // OK
+    buttonator("&#10004;", "ok", numpad.select);    
     // 0
     buttonator(0, "zero", () => { numpad.digit(0); });
     // .
     buttonator(".", "dot", numpad.dot);
-    // OK
-    buttonator("&#10004;", "ok", numpad.select);
+
 
     // (A6) ATTACH NUMPAD TO HTML BODY
     document.body.appendChild(numpad.hwrap);
@@ -114,7 +111,6 @@ var numpad = {
     if (opt.decimal === undefined) { opt.decimal = true; }
 
     // (C2) GET + SET TARGET OPTIONS
-    opt.target.readOnly = true; // PREVENT ONSCREEN KEYBOARD
     opt.target.dataset.max = opt.max;
     opt.target.dataset.decimal = opt.decimal;
     opt.target.addEventListener("click", () => { numpad.show(opt.target); });
@@ -122,7 +118,7 @@ var numpad = {
     // (C3) ATTACH CUSTOM LISTENERS
     if (opt.onselect) {
       opt.target.addEventListener("numpadok", opt.onselect);
-    }
+    } 
     if (opt.oncancel) {
       opt.target.addEventListener("numpadcx", opt.oncancel);
     }

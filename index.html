@@ -83,8 +83,7 @@
       background-color: #4CAF50;
     }
   </style>
-
-  <title>CSV File to HTML Table Using AJAX jQuery</title>
+  <title>Currency Converter</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -117,7 +116,7 @@
         <!-- <p align="center"> -->
 
           <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
-          <input type="number" id="currency1Amount" placeholder="Please input currency amount">
+          <input id="currency1Amount" placeholder="Please input currency amount">
 
         </form>
         <!-- </p> -->
@@ -208,23 +207,9 @@
   ////////////////////// -- Window Handler (takes input) -- ////////////////////////
 
   window.addEventListener("load", () => {
-    // (C1) BASIC NUMPAD
-    numpad.attach({ target: document.getElementById("currency1Amount") });
-    // numpad.attach({target2: document.getElementById("currency2Amount")});
-
-    // (C2) WITH ALL POSSIBLE OPTIONS
     numpad.attach({
       target: document.getElementById("currency1Amount"),
-      // target2: document.getElementById("currency2Amount"),
-
-      max: 10, // MAX 10 DIGITS
-      decimal: false, // NO DECIMALS ALLOWED
-      onselect: () => { // CALL THIS AFTER SELECTING NUMBER
-        //alert("Currency 1 set.");
-      },
-      oncancel: () => { // CALL THIS AFTER CANCELING
-        //alert("Currency 1 canceled.");
-      }
+      target: document.getElementById("currency1Amount")
     });
   });
 

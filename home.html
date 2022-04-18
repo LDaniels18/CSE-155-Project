@@ -1,27 +1,42 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>CSV File to HTML Table Using AJAX jQuery</title>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
- </head>
+  <link rel="stylesheet" href="numpad.css"/>
+  <script src="numpad.js"></script>
+</head>
  <body>
   <div class="container">
    <div class="table-responsive">
     <h1 align="center">Test Data</h1>
     <br/>
-    <select id="selectOption">
-      <option>Choose a currency</option>
-  </select>
-    <br/>
-    <div id="currency_table">
-    </div>
+    <select id="currency1">
+      <option>Choose a currency you would like to from</option>
+    </select>
+    <select id="currency2">
+      <option>Choose a currency you would like to convert to</option>
+   </select>
+   <br/>
+   <input type="number" id="currency1Amount" placeholder="Please input currency amount">
+   <input type="number" id="currency2Amount" placeholder="Please input currency amount">
+
    </div>
+   <br/>
   </div>
-  <div>
+
+  <div id="numWrap">
+    <div id="numPad" >
+      <input id="numDisplay" type="text">
+      <div id="numBWrap" >
+        <div class="num">7</div> <div class="num">8</div> <div class="num">9</div> <div class="del">⤆</div>
+        <div class="num">4</div> <div class="num">5</div> <div class="num">6</div> <div class="clr">C</div>
+        <div class="num">1</div> <div class="num">2</div> <div class="num">3</div> <div class="cx">X</div>
+        <div class="zero">0</div> <div class="dot">.</div> <div class="ok">✔</div>
+      <div>
+    </div>
   </div>
-  <input id="demo" placeholder="Please Select ..." />
  </body>
 </html>
 
@@ -37,48 +52,53 @@
       //count = 0 includes table titles
     for(var count = 1; count<currency_data.length; count++)
     {
-     var cell_data = currency_data[count].split(",");
-     table_data += '<tr>';
+      var cell_data = currency_data[count].split(",");
       //setting cell_cout = 0 includes Currency_id
      for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
      {
         //actual cell data
-        var select = document.getElementById("selectOption");
-        table_data += cell_data[cell_count];
-
-        for(var i = 0; i < cell_data.length; i++) {
-          var opt = table_data += cell_data[i];
-          var el = document.createElement("option");
-          el.textContent.ondbclick() = opt;
-          el.value.ondbclick() = opt;
-          select.appendChild(el);
-        }
-      }
-     
-     table_data += '</tr>';
+        var opt = currency_data[count];
+        var currency1 = document.getElementById("currency1");
+        //var currency2 = document.getElementById("currency2");
+        var el = document.createElement("option");
+        el.textContent = opt;
+        currency1.appendChild(el);
+        //currency2.appendChild(el);
+     }
+     for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
+     {
+        //actual cell data
+        var opt = currency_data[count];
+        //var currency1 = document.getElementById("currency1");
+        var currency2 = document.getElementById("currency2");
+        var el = document.createElement("option");
+        el.textContent = opt;
+        //currency1.appendChild(el);
+        currency2.appendChild(el);
+     }
     }
-    table_data += '</table>';
-    $('#currency_table').html(table_data);
    }
   });
 
-  // $.get(csv_path, function(data){
-  //   var csv_string = data;
-  // });
 
-  // (function(){
-  //   var csv_path = "Currency.csv";
-  //   var renderCSVDropdown = function(csv){
-  //     var dropdown = $('select#my-dropdown');
-  //     for(var i = 0; i < csv.length; i++){
-  //       var record = csv[i];
-  //       var entry = $('<option>').attr('value', record.someProperty);
-  //         dropdown.append(entry);
-  //     }
-  //   };
-  //   $.get(csv_path, function(data){
-  //     var csv = CSVToArray(data);
-  //     renderCSVDropdown(data);
-  //   });
-  // }());
+  window.addEventListener("load", () => {
+      // (C1) BASIC NUMPAD
+      numpad.attach({target: document.getElementById("currency1Amount")});
+
+      // (C2) WITH ALL POSSIBLE OPTIONS
+      numpad.attach({
+        target: document.getElementById("currency1Amount"),
+      });
+    });
+    
+    window.addEventListener("load", () => {
+      // (C1) BASIC NUMPAD
+      numpad.attach({target: document.getElementById("currency2Amount")});
+
+      // (C2) WITH ALL POSSIBLE OPTIONS
+      numpad.attach({
+        target: document.getElementById("currency2Amount"),
+      });
+    });
+
 </script>

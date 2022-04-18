@@ -56,7 +56,7 @@
 }
 #numBWrap div:hover { cursor: pointer; }
 #numBWrap .num, #numBWrap .zero, #numBWrap .dot { background: #fff; }
-#numBWrap .zero { grid-column: span 2; }
+#numBWrap .zero { grid-column: span 3; }
 #numBWrap .del, #numBWrap .clr { background: #ffecd7; }
 #numBWrap .cx { background: #ffdada; }
 #numBWrap .ok { background: #e7f3ff; }

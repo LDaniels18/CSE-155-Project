@@ -14,9 +14,9 @@ const prompt = ps();
 
 //varables should remained unchanged and must equal something
 //the user input is placeholder code to show that it works
-let currency1 = prompt("Enter your desired currency: ")
-let currency2 = prompt("Enter the currency you want to convert: ");
-var amount = prompt("Enter the amount of currency you want to convert: ");
+let currency1 = 
+let currency2 = 
+var amount = 
 
 
 //Highly recommnded not to change code below
@@ -47,9 +47,10 @@ fs.createReadStream('Currency Database.csv')
 //-end-
 
 const app = express();
+const PORT = 5500;
 
 //can be modified to output differently 
-app.get("/", function(req, res) {
+app.post("/conversion.", function(req, res) {
 
   //Code below is the main conversion
   //modification not recommended
@@ -65,6 +66,6 @@ app.get("/", function(req, res) {
 
 //can be modified/removed 
 //generic code to output to a webpage
-app.listen(5555, function() {
+app.listen(PORT, function() {
   console.log(`Server is up and running on 5555 ...`);
 });

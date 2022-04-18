@@ -103,12 +103,12 @@
       <br />
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
-      <form action="" align="center">
-        Currency1: <select id="currency1" ondblclick="myFunc()">
+      <form action="http://127.0.0.1:5500/conversion.js" align="center" method="POST">
+        Currency1: <select id="currency1" ondblclick="myFunc()" name="Currency1">
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
         </select>
-        Currency2: <select id="currency2" ondblclick="myFunc()">
+        Currency2: <select id="currency2" ondblclick="myFunc()" name="Currency2">
           <option>Choose a currency you would like to convert to: </option>
         </select>
         <!-- a seperate class for the input box, so it can be aligned properly -->
@@ -116,8 +116,8 @@
         <!-- <p align="center"> -->
 
         <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
-        Currency1Amount: <input id="currency1Amount" placeholder="Please input currency amount">
-        <button class="button" onclick="conversion()"> Convert </button>
+        Currency1Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
+        <button class="button" type="submit"> Convert </button>
       </form>
       <!-- </p> -->
       <!-- </div> -->
@@ -193,18 +193,91 @@
     }
   });
 
-  function conversion() {
+  // function conversion() {
 
-    var amount = document.getElementById("currency1Amount").value;
-    var currency1 = document.getElementById("currency1").value;
-    var currency2 = document.getElementById("currency2").value;
+  //   let csv = require('csv-parser');
+  //   let fs = require('fs');
 
-    //alert("Currency Amount: " + amount + " Currency 1 Name: " + currency1 + " Currency 2 Name: " + currency2);
+  //   var amount = document.getElementById("currency1Amount").value;
+  //   let currency1 = document.getElementById("currency1").value;
+  //   let currency2 = document.getElementById("currency2").value;
 
-    ////////////////////////////////////////////////////
+  //   alert("Currency Amount: " + amount + " Currency 1 Name: " + currency1 + " Currency 2 Name: " + currency2);
+
+  //   ////////////////////////////////////////////////////
 
     
-  }
+  //  // const express = require('express');
+
+  //   //do not change
+  //   const results = [];
+  //   var number1;
+  //   var number2;
+
+  //   // //used to take a user input
+  //   // //can be removed altogether 
+  //   // const ps = require("prompt-sync");
+  //   // const prompt = ps();
+
+  //   // //varables should remained unchanged and must equal something
+  //   // //the user input is placeholder code to show that it works
+  //   // let currency1 = prompt("Enter your desired currency: ")
+  //   // let currency2 = prompt("Enter the currency you want to convert: ");
+  //   // var amount = prompt("Enter the amount of currency you want to convert: ");
+
+
+  //   //Highly recommnded not to change code below
+  //   //Code parses the desired data in the csv file depending on the values of currency1 and currency2 variables
+  //   //-start-
+  //   fs.createReadStream('Currency Database.csv')
+  //     .pipe(csv())
+  //     .on('data', (data) => {
+  //       if (data['Currency_Type'] === currency1) {
+  //         results.push(data);
+  //       }
+  //     })
+  //     .on('end', () => {
+  //       global.number1 = results[0].USD_Rate;
+  //     })
+
+
+  //   fs.createReadStream('Currency Database.csv')
+  //     .pipe(csv())
+  //     .on('data', (data) => {
+  //       if (data['Currency_Type'] === currency2) {
+  //         results.push(data);
+  //       }
+  //     })
+  //     .on('end', () => {
+  //       global.number2 = results[1].USD_Rate;
+  //     })
+  //   //-end-
+
+  //   //const app = express();
+
+  //   // //can be modified to output differently 
+  //   // app.get("/", function (req, res) {
+
+  //   //   //Code below is the main conversion
+  //   //   //modification not recommended
+  //   //   //-start-
+  //      var result = (amount * global.number1) / global.number2;
+
+  //      result = Math.floor(result * 100) / 100
+  //   //   //-end-
+
+  //   //   res.send(result + "");
+  //   // });
+
+
+  //   // //can be modified/removed 
+  //   // //generic code to output to a webpage
+  //   // app.listen(5555, function () {
+  //   //   console.log(`Server is up and running on 5555 ...`);
+  //   // });
+
+
+  // }
 
   ////////////////////// -- Window Handler (takes input) -- ////////////////////////
 

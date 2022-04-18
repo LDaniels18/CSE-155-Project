@@ -103,23 +103,23 @@
       <br />
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
-        <form action="" align="center">
-        <select id="currency1" ondblclick="myFunc()">
+      <form action="" align="center">
+        Currency1: <select id="currency1" ondblclick="myFunc()">
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
         </select>
-        <select id="currency2" ondblclick="myFunc()">
+        Currency2: <select id="currency2" ondblclick="myFunc()">
           <option>Choose a currency you would like to convert to: </option>
         </select>
         <!-- a seperate class for the input box, so it can be aligned properly -->
-      <!-- <div class="numContainer"> -->
+        <!-- <div class="numContainer"> -->
         <!-- <p align="center"> -->
 
-          <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
-          <input id="currency1Amount" placeholder="Please input currency amount">
-
-        </form>
-        <!-- </p> -->
+        <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
+        Currency1Amount: <input id="currency1Amount" placeholder="Please input currency amount">
+        <button class="button" onclick="conversion()"> Convert </button>
+      </form>
+      <!-- </p> -->
       <!-- </div> -->
       <!-- sperating both divsions -->
       <br />
@@ -132,14 +132,14 @@
   <!-- sperating both divsions -->
 
   <!-- Seperate Class for the output, so it can be aligned properly -->
-  <div class="output">
+  <!-- <div class="output">
     <h1 align="center">Output Testing</h1>
 
-    <!-- Creating a button to convert the two values -->
+    <-- Creating a button to convert the two values -->
 
-    <button class="button" onclick="conversion()"> Convert </button>
+  <!-- <button class="button" onclick="conversion()"> Convert </button>
 
-  </div>
+  </div> --> -->
 
 </body>
 
@@ -193,16 +193,18 @@
     }
   });
 
-
   function conversion() {
 
-    const element_currency1 = document.getElementById("currency1");
-    alert(element_currency1);
-    return 0;
+    var amount = document.getElementById("currency1Amount").value;
+    var currency1 = document.getElementById("currency1").value;
+    var currency2 = document.getElementById("currency2").value;
 
+    //alert("Currency Amount: " + amount + " Currency 1 Name: " + currency1 + " Currency 2 Name: " + currency2);
+
+    ////////////////////////////////////////////////////
+
+    
   }
-
-
 
   ////////////////////// -- Window Handler (takes input) -- ////////////////////////
 

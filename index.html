@@ -134,38 +134,46 @@
 </html>
 
 <script>
-
   /////////////////////////////////////////////////////////////
   function myFunc() {  //logic pertaining to the tables, to output each line:
-  }$.ajax({
-    url: "Currency.csv",
-    dataType: "text",
+  } $.ajax({
+    url: "Currency.csv", //url to the file in the directory
+    dataType: "text", //expecting to recieve taxt as data
 
     success: function (data) {
-      var currency_data = data.split(/\r?\n|\r/);
+      var currency_data = data.split(/\r?\n|\r/); //splits the file contents to be read 
       var table_data = '<table class="table table-bordered table-striped">';
       //count = 0 includes table titles
-      for (var count = 1; count < currency_data.length; count++){ //traversing the list of lines from the csv
-        var cell_data = currency_data[count].split(","); //each individual line
-          for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
-            //actual cell data
-            var opt = currency_data[count]; //element of data carried by the currency_data[] array
-            var currency1 = document.getElementById("currency1"); //the element created in the body section of the HTML File
-            var el = document.createElement("option");//
 
-            el.textContent = opt;
-            currency1.appendChild(el);
-            //currency2.appendChild(el);
-          }
-       
+      //To traverse the entirety of the data table:
+      for (var count = 1; count < currency_data.length; count++) { //traversing the list of lines from the csv
+        var cell_data = currency_data[count].split(","); //each individual line
+
+        var temp_message = currency_data[count]; //the message is the current cell of data within the list:
+        var temp_arr = temp_message.split(',') //splitting the element
+
+        //For the first drop down box (keep at 1 to prevent printing doubles:):
+        for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+
+          var currency_name = temp_arr[1];
+          var opt = currency_name; //element of data carried by the currency_data[] array
+          var currency1 = document.getElementById("currency1"); //the element created in the body section of the HTML File
+          var el = document.createElement("option"); //creating an option element to apply to the element box
+
+          el.textContent = opt; //option element to contain elements (text) of the currency names
+          currency1.appendChild(el); //outputting onto the dropdown list
+          //cell_count++;
+
+        }
+
+        //For the second drop down box:
         for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
           //actual cell data
-          var opt = currency_data[count];
-          //var currency1 = document.getElementById("currency1");
+          var opt = temp_arr[1];
           var currency2 = document.getElementById("currency2");
           var el = document.createElement("option");
+
           el.textContent = opt;
-          //currency1.appendChild(el);
           currency2.appendChild(el);
         }
 

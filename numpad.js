@@ -8,7 +8,7 @@ var numpad = {
   init: () => {
     // (A1) WRAPPER
     numpad.hwrap = document.createElement("div");
-    numpad.hwrap.id = "numWrap";
+    //numpad.hwrap.id = "numWrap";
 
     // (A2) ENTIRE NUMPAD ITSELF
     numpad.hpad = document.createElement("div");

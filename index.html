@@ -103,7 +103,7 @@
       <br />
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
-      <form action="conversion.js" align="center" method="post">
+        <!-- <form action="conversion.js" align="center" method="post"> -->
         Currency1: <select id="currency1" ondblclick="myFunc()" name="Currency1">
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
@@ -117,12 +117,12 @@
 
         <!-- the next two are input boxes: where we will wait for some sort of input, id allows us to use javascript to add numpad logic -->
         Currency1Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
-        <!-- <button class="button" type="submit"> Convert </button> -->
-      </form>
-      <!-- </p> -->
-      <!-- </div> -->
-      <!-- sperating both divsions -->
-      <br />
+        <button class="button" type="button" onclick="conversion()"> Convert </button>
+        <!-- </form> -->
+        <!-- </p> -->
+        <!-- </div> -->
+        <!-- sperating both divsions -->
+        <br />
       </p>
       <br />
     </div>
@@ -134,11 +134,9 @@
   <!-- Seperate Class for the output, so it can be aligned properly -->
   <!-- <div class="output">
     <h1 align="center">Output Testing</h1>
-
     <-- Creating a button to convert the two values -->
 
   <!-- <button class="button" onclick="conversion()"> Convert </button>
-
   </div> --> -->
 
 </body>
@@ -153,6 +151,9 @@
     dataType: "text", //expecting to recieve taxt as data
 
     success: function (data) {
+
+      ///////////////////// -- V.3 (Displays both the currency names and market price) //////////////////
+
       var currency_data = data.split(/\r?\n|\r/); //splits the file contents to be read 
       var table_data = '<table class="table table-bordered table-striped">';
       //count = 0 includes table titles
@@ -168,7 +169,7 @@
         //For the first drop down box (keep at 1 to prevent printing doubles:):
         for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
 
-          var currency_name = temp_arr[1]; //always outputs the currency name
+          var currency_name = temp_arr[1] + "," + temp_arr[2]; //always outputs the currency name and 
           var opt = currency_name; //element of data carried by the currency_data[] array
           var currency1 = document.getElementById("currency1"); //the element created in the body section of the HTML File
           var el = document.createElement("option"); //creating an option element to apply to the element box
@@ -182,7 +183,7 @@
         //For the second drop down box:
         for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
           //actual cell data
-          var opt = temp_arr[1];
+          var opt = temp_arr[1] + "," + temp_arr[2];
           var currency2 = document.getElementById("currency2");
           var el = document.createElement("option");
 
@@ -192,94 +193,208 @@
 
       }
     }
+
+    //   ///////////////////// -- V.2 (Displays only the currency names) //////////////////
+    //   var currency_data = data.split(/\r?\n|\r/); //splits the file contents to be read 
+    //   var table_data = '<table class="table table-bordered table-striped">';
+    //   //count = 0 includes table titles
+
+    //   //To traverse the entirety of the data table:
+    //   for (var count = 1; count < currency_data.length; count++) { //traversing the list of lines from the csv
+    //     var cell_data = currency_data[count].split(","); //each individual line
+
+    //     // for elements by column
+    //     var temp_message = currency_data[count]; //the message is the current cell of data within the list:
+    //     var temp_arr = temp_message.split(',') //splitting the element
+
+    //     //For the first drop down box (keep at 1 to prevent printing doubles:):
+    //     for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+
+    //       var currency_name = temp_arr[1]; //always outputs the currency name
+    //       var opt = currency_name; //element of data carried by the currency_data[] array
+    //       var currency1 = document.getElementById("currency1"); //the element created in the body section of the HTML File
+    //       var el = document.createElement("option"); //creating an option element to apply to the element box
+
+    //       el.textContent = opt; //option element to contain elements (text) of the currency names
+    //       currency1.appendChild(el); //outputting onto the dropdown list
+    //       //cell_count++;
+
+    //     }
+
+    //     //For the second drop down box:
+    //     for (var cell_count = 1; cell_count < cell_data.length - 1; cell_count++) {
+    //       //actual cell data
+    //       var opt = temp_arr[1];
+    //       var currency2 = document.getElementById("currency2");
+    //       var el = document.createElement("option");
+
+    //       el.textContent = opt;
+    //       currency2.appendChild(el);
+    //     }
+
+    //   }
+    // }
+
+    //////////////////////////// V.1 (full data line)///////////////////
+    //   var currency_data = data.split(/\r?\n|\r/);
+    //   var table_data = '<table class="table table-bordered table-striped">';
+    //     //count = 0 includes table titles
+    //   for(var count = 1; count<currency_data.length; count++)
+    //   {
+    //     var cell_data = currency_data[count].split(",");
+    //     //setting cell_cout = 0 includes Currency_id
+    //    for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
+    //    {
+    //       //actual cell data
+    //       var opt = currency_data[count];
+    //       var currency1 = document.getElementById("currency1");
+    //       //var currency2 = document.getElementById("currency2");
+    //       var el = document.createElement("option");
+    //       el.textContent = opt;
+    //       currency1.appendChild(el);
+    //       //currency2.appendChild(el);
+    //    }   
+    //    for(var cell_count=1; cell_count<cell_data.length-1; cell_count++)
+    //    {
+    //       //actual cell data
+    //       var opt = currency_data[count];
+    //       //var currency1 = document.getElementById("currency1");
+    //       var currency2 = document.getElementById("currency2");
+    //       var el = document.createElement("option");
+    //       el.textContent = opt;
+    //       //currency1.appendChild(el);
+    //       currency2.appendChild(el);
+    //    }
+    //   }
+    //  }
   });
 
   //scraped function --- opting for the post method of pushing elements
-  // function conversion() {
+  function conversion() {
 
-  //   let csv = require('csv-parser');
-  //   let fs = require('fs');
+    // let csv = require('csv-parser');
+    // let fs = require('fs');
 
-  //   var amount = document.getElementById("currency1Amount").value;
-  //   let currency1 = document.getElementById("currency1").value;
-  //   let currency2 = document.getElementById("currency2").value;
 
-  //   alert("Currency Amount: " + amount + " Currency 1 Name: " + currency1 + " Currency 2 Name: " + currency2);
 
-  //   ////////////////////////////////////////////////////
+    //think about using parseInt(value) -- 
+    var amount = document.getElementById("currency1Amount").value;
+    var currency1 = document.getElementById("currency1").value;
+    var currency2 = document.getElementById("currency2").value;
 
+    // //testing parseInt(value)
+    // var test = parseInt(amount);
     
-  //  // const express = require('express');
+    // splitting contents:
+    const split_1 = currency1.split(",");
+    var new_currency1 = split_1[1];
+   //alert("First Check (currency 1): " + new_currency1);
 
-  //   //do not change
-  //   const results = [];
-  //   var number1;
-  //   var number2;
+    // splitting contents:
+    const split_2 = currency2.split(",");
+    var new_currency2 = split_2[1];
+    //alert("Second Check (currency 2): " + new_currency2);
 
-  //   // //used to take a user input
-  //   // //can be removed altogether 
-  //   // const ps = require("prompt-sync");
-  //   // const prompt = ps();
+    // //Using ParseInt() For all of our values:
+    var new_amount = parseFloat(amount);
+    //alert("Third Test (parse int of new_amount): " + new_amount);
 
-  //   // //varables should remained unchanged and must equal something
-  //   // //the user input is placeholder code to show that it works
-  //   // let currency1 = prompt("Enter your desired currency: ")
-  //   // let currency2 = prompt("Enter the currency you want to convert: ");
-  //   // var amount = prompt("Enter the amount of currency you want to convert: ");
+     var cur1 = parseFloat(new_currency1);
+    // alert("Fourth Test (parse of currency 1 amount): " + cur1);
 
-
-  //   //Highly recommnded not to change code below
-  //   //Code parses the desired data in the csv file depending on the values of currency1 and currency2 variables
-  //   //-start-
-  //   fs.createReadStream('Currency Database.csv')
-  //     .pipe(csv())
-  //     .on('data', (data) => {
-  //       if (data['Currency_Type'] === currency1) {
-  //         results.push(data);
-  //       }
-  //     })
-  //     .on('end', () => {
-  //       global.number1 = results[0].USD_Rate;
-  //     })
+     var cur2 = parseFloat(new_currency2);
+     //alert("Fifth Test: (Parse of the currency 2 amount): " + cur2);
 
 
-  //   fs.createReadStream('Currency Database.csv')
-  //     .pipe(csv())
-  //     .on('data', (data) => {
-  //       if (data['Currency_Type'] === currency2) {
-  //         results.push(data);
-  //       }
-  //     })
-  //     .on('end', () => {
-  //       global.number2 = results[1].USD_Rate;
-  //     })
-  //   //-end-
-
-  //   //const app = express();
-
-  //   // //can be modified to output differently 
-  //   // app.get("/", function (req, res) {
-
-  //   //   //Code below is the main conversion
-  //   //   //modification not recommended
-  //   //   //-start-
-  //      var result = (amount * global.number1) / global.number2;
-
-  //      result = Math.floor(result * 100) / 100
-  //   //   //-end-
-
-  //   //   res.send(result + "");
-  //   // });
+     alert("Amount: " + new_amount + "1st Currency: " + cur1 + "2nd Currency: " + cur2);
 
 
-  //   // //can be modified/removed 
-  //   // //generic code to output to a webpage
-  //   // app.listen(5555, function () {
-  //   //   console.log(`Server is up and running on 5555 ...`);
-  //   // });
+    //adding our conversion logic:
+    
+    var result = (new_amount * cur1) / cur2;
+
+    result = Math.floor(result * 100) / 100
+
+    alert(result);
 
 
-  // }
+    // alert("Currency Amount: " + amount + " Currency 1 Name: " + currency1 + " Currency 2 Name: " + currency2);
+    // alert("ParseInt() Testing: " + test); //it works!!!
+
+    ////////////////////////////////////////////////////
+
+
+    // // const express = require('express');
+
+    // //do not change
+    // const results = [];
+    // var number1;
+    // var number2;
+
+    // // //used to take a user input
+    // // //can be removed altogether 
+    // // const ps = require("prompt-sync");
+    // // const prompt = ps();
+
+    // // //varables should remained unchanged and must equal something
+    // // //the user input is placeholder code to show that it works
+    // // let currency1 = prompt("Enter your desired currency: ")
+    // // let currency2 = prompt("Enter the currency you want to convert: ");
+    // // var amount = prompt("Enter the amount of currency you want to convert: ");
+
+
+    // //Highly recommnded not to change code below
+    // //Code parses the desired data in the csv file depending on the values of currency1 and currency2 variables
+    // //-start-
+    // fs.createReadStream('Currency Database.csv')
+    //   .pipe(csv())
+    //   .on('data', (data) => {
+    //     if (data['Currency_Type'] === currency1) {
+    //       results.push(data);
+    //     }
+    //   })
+    //   .on('end', () => {
+    //     global.number1 = results[0].USD_Rate;
+    //   })
+
+
+    // fs.createReadStream('Currency Database.csv')
+    //   .pipe(csv())
+    //   .on('data', (data) => {
+    //     if (data['Currency_Type'] === currency2) {
+    //       results.push(data);
+    //     }
+    //   })
+    //   .on('end', () => {
+    //     global.number2 = results[1].USD_Rate;
+    //   })
+    // //-end-
+
+    // //const app = express();
+
+    // // //can be modified to output differently 
+    // // app.get("/", function (req, res) {
+
+    // //   //Code below is the main conversion
+    // //   //modification not recommended
+    // //   //-start-
+    // var result = (amount * global.number1) / global.number2;
+
+    // result = Math.floor(result * 100) / 100
+    // //   //-end-
+
+    // //   res.send(result + "");
+    // // });
+
+
+    // // //can be modified/removed 
+    // // //generic code to output to a webpage
+    // // app.listen(5555, function () {
+    // //   console.log(`Server is up and running on 5555 ...`);
+    // // });
+
+
+  }
 
   ////////////////////// -- Window Handler (takes input) -- ////////////////////////
 

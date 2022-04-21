@@ -17,10 +17,12 @@
 
 /* (B) NUMPAD */
 #numPad {
+  margin: 300px ;
+  margin-top: -350px;
   max-width: 250px;
   background: hsl(0, 0%, 92%);
   transform: translateX(60%);
-  padding: 5px;
+  padding: 20px;
 }
 
 /* (C) DISPLAY */

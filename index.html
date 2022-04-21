@@ -104,27 +104,27 @@
     <div class="table-responsive">
       <!-- Header for the Page -->
       <h1 align="center">Currency Converter for Blind People</h1>
-      <br />
+      <br/>
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-        Currency 1: <select id="currency1" ondblclick="myFunc()" name="Currency1">
+        <form>  
+        Currency 1: <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" SIZE="3">
 
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
         </select>
 
-        Currency 2: <select id="currency2" ondblclick="myFunc()" name="Currency2">
+        Currency 2: <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
 
           <option>Choose a currency you would like to convert to: </option>
         </select>
-        </p >
-        <p align="Center">
           <div class="output">
         Currency 1 Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
         <button class="button" type="button" onclick="conversion()"> Convert </button>
+        <input class = "button" type="reset" value="Reset">
+        </form>
         </div> 
-      </p>
         <br />
       </p>
       <br />
@@ -141,7 +141,7 @@
     <-- Creating a button to convert the two values -->
 
   <!-- <button class="button" onclick="conversion()"> Convert </button>
-  </div> --> -->
+  </div> -->
 
 </body>
 
@@ -328,6 +328,12 @@
     });
   });
 
+  function put_it()
+   {
+   var w = document.myform.sel_list.selectedIndex;
+   document.myform.r_text.value = 
+      document.myform.sel_list.options[w].text;
+   }
 
 
 </script>

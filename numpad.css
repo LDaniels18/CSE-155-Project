@@ -17,8 +17,14 @@
 
 /* (B) NUMPAD */
 #numPad {
+  /* For laptops */
   margin: 300px ;
-  margin-top: -350px;
+  margin-top: -550px;
+
+  /* For Tablets
+  margin: 200px ;
+  margin-top: -680px; */
+
   max-width: 250px;
   background: hsl(0, 0%, 92%);
   transform: translateX(75vh);

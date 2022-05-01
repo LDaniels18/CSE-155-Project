@@ -5,16 +5,24 @@
 <head>
   <meta charset="utf-8">
   <style>
-    
+
+    /* adding the invert function for various text snippets */
+    .invert { 
+        filter: invert(100%);
+      }
+
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Times New Roman', Times, serif;
+      font-family: 'Arial';
+      filter: invert(100%); 
     }
 
     .container {
       position: relative;
       margin: 0px auto;
+      box-sizing: border-box;
+      /* height: 300px; */
       /* Margin: Space around an HTML Element */
     }
 
@@ -46,6 +54,11 @@
       font-family: sans-serif;
       color: #333;
     }
+
+    /* .box_size{
+      height: 10000px;
+      width: 10000px;
+    } */
 
     #currency1 {
       width: 450px;
@@ -103,13 +116,13 @@
 
     <div class="table-responsive">
       <!-- Header for the Page -->
-      <h1 align="center">Currency Converter for Blind People</h1>
-      <br/>
+    <h1 align="center" class="invert" ><b>Currency Converter for Blind People</b></h1>
+      <br />
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-        <form>  
-        Currency 1: <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" SIZE="3">
+      <form>
+        Currency 1: <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="3" >
 
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
@@ -119,17 +132,17 @@
 
           <option>Choose a currency you would like to convert to: </option>
         </select>
-          <div class="output">
-        Currency 1 Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
-        <button class="button" type="button" onclick="conversion()"> Convert </button>
-        <input class = "button" type="reset" value="Reset">
-        </form>
-        </div> 
-        <br />
-      </p>
-      <br />
+        <div class="output">
+          Currency 1 Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
+          <button class="button" type="button" onclick="conversion()"> Convert </button>
+          <input class="button" type="reset" value="Reset">
+      </form>
     </div>
     <br />
+    </p>
+    <br />
+  </div>
+  <br />
   </div>
   <br />
 
@@ -148,7 +161,7 @@
 </html>
 
 <script>
-  
+
   ////////////////////////////////// -- Dropbox Logic -- //////////////////////////////////////
   function myFunc() {  //logic pertaining to the tables, to output each line:
   } $.ajax({
@@ -328,12 +341,11 @@
     });
   });
 
-  function put_it()
-   {
-   var w = document.myform.sel_list.selectedIndex;
-   document.myform.r_text.value = 
+  function put_it() {
+    var w = document.myform.sel_list.selectedIndex;
+    document.myform.r_text.value =
       document.myform.sel_list.options[w].text;
-   }
+  }
 
 
 </script>

@@ -1,3 +1,12 @@
 This Branch will try to connect all the components of the project together. 
 So the UI to the Conversion logic and other components that will be built for the completion
 of this project.
+
+To have this application run properly, you must run a localHost server through index2.html
+This is to get the data and conversion to run properly. Without running a local server, the currencies will not output
+
+To run a localserver on VisualStudio Code, download the Live Server extension. In VSCode, open index2.html, press "Control + p"(command + p on MacOS), press ">" and select "Live Server: Open with Live Servåer" This will automatically open the application with a running server on your default broswers
+
+We also recommend using the built-in Screen reader in your operating system.
+For Windows, press "Windows button + Control + Enter"
+For MacOS, press "fn + Command + f5"

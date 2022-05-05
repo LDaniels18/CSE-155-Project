@@ -29,20 +29,6 @@
 
     }
 
- 
-
-    .table_responsive {
-      padding: 0 30px 0 10px;
-      background: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-      font-family: sans-serif;
-      color: #333;
-    }
 
     #currency1{
   text-align: center;
@@ -53,7 +39,7 @@
 }
 
     #currency2{
-text-align: center;
+  text-align: center;
     width: 560px;
     height: 550px;
     font-size: 30px;
@@ -61,25 +47,18 @@ text-align: center;
 
     #currency1Amount {
       margin-top: -60px;
-      width: 1110px;
+      width: 1135px;
       height: 120px;
-    }
-
-
-
-    .table_responsive {
-      -webkit-appearance: menulist-button;
-      height: 50px;
     }
 
     .button {
       border: none;
       color: white;
-      padding: 15px 530px;
+      padding: 40px 249px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       margin: 4px 2px;
       cursor: pointer;
       background-color: #4CAF50;
@@ -124,6 +103,8 @@ text-align: center;
         <h1 
         Currency 1 Amount:
          > <input id="currency1Amount"  placeholder="Please input currency amount" name="amount">
+         <br>
+         <br>
         <button class="button" type="button" onclick="conversion()"> Convert </button>
         <input class = "button" type="reset" value="Reset">
     </form>

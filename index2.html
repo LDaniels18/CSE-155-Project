@@ -5,24 +5,16 @@
 <head>
   <meta charset="utf-8">
   <style>
-
-    /* adding the invert function for various text snippets */
-    .invert { 
-        filter: invert(100%);
-      }
-
+    
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Arial';
-      filter: invert(100%); 
+      font-family: 'Times New Roman', Times, serif;
     }
 
     .container {
       position: relative;
       margin: 0px auto;
-      box-sizing: border-box;
-      /* height: 300px; */
       /* Margin: Space around an HTML Element */
     }
 
@@ -37,10 +29,7 @@
 
     }
 
-    .numContainer {
-      margin-top: -65px;
-      /*background-position-y: center;*/
-    }
+ 
 
     .table_responsive {
       padding: 0 30px 0 10px;
@@ -55,30 +44,28 @@
       color: #333;
     }
 
-    /* .box_size{
-      height: 10000px;
-      width: 10000px;
-    } */
+    #currency1{
+  text-align: center;
 
-    #currency1 {
-      width: 450px;
-      height: 150px;
-    }
+    width: 560px;
+    height: 550px;
+    font-size: 30px;
+}
 
-    #currency2 {
-      width: 450px;
-      height: 150px;
-    }
+    #currency2{
+text-align: center;
+    width: 560px;
+    height: 550px;
+    font-size: 30px;
+}
 
     #currency1Amount {
-      width: 450px;
-      height: 75px;
+      margin-top: -60px;
+      width: 1110px;
+      height: 120px;
     }
 
-    #currency2Amount {
-      width: 450px;
-      height: 75px;
-    }
+
 
     .table_responsive {
       -webkit-appearance: menulist-button;
@@ -88,7 +75,7 @@
     .button {
       border: none;
       color: white;
-      padding: 15px 32px;
+      padding: 15px 530px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
@@ -110,41 +97,40 @@
 
 <body>
   <!-- refering to the entire page of tables that will be used -->
-
   <div class="container">
     <!-- a specific class to refer to the 2 table containing CSV data -->
 
     <div class="table-responsive">
       <!-- Header for the Page -->
-    <h1 align="center" class="invert" ><b>Currency Converter for Blind People</b></h1>
-      <br />
+
       <p align="center">
+        <h1 align="center">Currency 1 &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp Currency2</h1>
+
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-      <form>
-        Currency 1: <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="3" >
+        <form>  
+       <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" SIZE="3">
 
           <!-- option allows for a text line to act as a place holder -->
           <option>Choose a currency you would like to start from: </option>
         </select>
 
-        Currency 2: <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
+        <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
 
           <option>Choose a currency you would like to convert to: </option>
         </select>
-        <div class="output">
-          Currency 1 Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
-          <button class="button" type="button" onclick="conversion()"> Convert </button>
-          <input class="button" type="reset" value="Reset">
-      </form>
+          <div class="output">
+        </form>
+        </div> 
+        <h1 
+        Currency 1 Amount:
+         > <input id="currency1Amount"  placeholder="Please input currency amount" name="amount">
+        <button class="button" type="button" onclick="conversion()"> Convert </button>
+        <input class = "button" type="reset" value="Reset">
     </div>
     <br />
-    </p>
-    <br />
   </div>
-  <br />
-  </div>
-  <br />
+
 
   <!-- sperating both divsions -->
 
@@ -161,7 +147,7 @@
 </html>
 
 <script>
-
+  
   ////////////////////////////////// -- Dropbox Logic -- //////////////////////////////////////
   function myFunc() {  //logic pertaining to the tables, to output each line:
   } $.ajax({
@@ -341,11 +327,12 @@
     });
   });
 
-  function put_it() {
-    var w = document.myform.sel_list.selectedIndex;
-    document.myform.r_text.value =
+  function put_it()
+   {
+   var w = document.myform.sel_list.selectedIndex;
+   document.myform.r_text.value = 
       document.myform.sel_list.options[w].text;
-  }
+   }
 
 
 </script>

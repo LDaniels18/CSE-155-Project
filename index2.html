@@ -81,25 +81,32 @@
 
     <div class="table-responsive">
       <!-- Header for the Page -->
-
+      <h3 align="center" class="invert" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+        <b>
+          Hello, and welcome to Currency converter. If you are using a Windows Device and would likee to use dictation, 
+          If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' 
+        </b>
+      </h3>
       <p align="center">
-        <h1 align="center">Currency 1 &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp  &nbsp Currency2</h1>
-
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-        <form>  
-       <select id="currency1" name="Currency1" ondblclick="put_it()" SIZE="3">
+          <form style="float:left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+            <b>Currency 1:</b>
+            <br>
+            <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="20" >
+              <!-- option allows for a text line to act as a place holder -->
+              <option>Choose a currency you would like to start from: </option>
+            </select>
+          </form>
+          <form style="float:right ">
+              <b>currency 2:</b>
+            <br>
+            <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
+              <option>Choose a currency you would like to convert to: </option>
+            </select>
+          </form>
 
-          <!-- option allows for a text line to act as a place holder -->
-          <option>Choose a currency you would like to start from: </option>
-        </select>
 
-        <select id="currency2" name="Currency2" ondblclick="put_it()" SIZE="3">
-
-          <option>Choose a currency you would like to convert to: </option>
-        </select>
-          <div class="output">
-        </div> 
         <h1 
         Currency 1 Amount:
          > <input id="currency1Amount"  placeholder="Please input currency amount" name="amount">
@@ -107,7 +114,6 @@
          <br>
         <button class="button" type="button" onclick="conversion()"> Convert </button>
         <input class = "button" type="reset" value="Reset">
-    </form>
 
 
   <!-- sperating both divsions -->

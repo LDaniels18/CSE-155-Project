@@ -81,27 +81,36 @@
 
     <div class="table-responsive">
       <!-- Header for the Page -->
-      <h3 align="center" class="invert" style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+      <h3 align="center" class="invert" style="font-family:Arial, Helvetica, sans-serif">
         <b>
-          Hello, and welcome to Currency converter. If you are using a Windows Device and would likee to use dictation, 
-          If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' 
+          Hello, and welcome to Currency converter. If you are using a Windows Device and would like to use dictation, 
+          If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' To scroll down, 
         </b>
       </h3>
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
           <form>
-            <div style="float:left; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-              <b>Currency 1:</b>
+            <div style="float:left; font-family:Arial, Helvetica, sans-serif">
+              <b style="font-size:20px">Currency 1:</b>
+              <br>
+              <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+              <br>
+              <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
               <br>
               <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="20" >
                 <!-- option allows for a text line to act as a place holder -->
                 <option>Choose a currency you would like to start from: </option>
               </select>
             </div>
-            <div style="float:right; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
-              <b>currency 2:</b>
-            <br>
+            <div style="float:right; font-family:Arial, Helvetica, sans-serif">
+              <b style="font-size:20px">Currency 2:</b>
+              <div>
+                <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+                <br>
+                <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
+                <br>
+              </div>
             <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
               <option>Choose a currency you would like to convert to: </option>
             </select>

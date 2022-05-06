@@ -5,25 +5,23 @@
 <head>
   <meta charset="utf-8">
   <style>
+    
+    body {
+      margin: 0;
+      padding: 0;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-family: Arial, Helvetica, sans-serif;
+      
+      filter: invert(100%);
+    }
 
-    /* adding the invert function for various text snippets */
     .invert { 
         filter: invert(100%);
       }
 
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Arial';
-      font-size: xx-large;
-      filter: invert(100%); 
-    }
-
     .container {
       position: relative;
       margin: 0px auto;
-      box-sizing: border-box;
-      /* height: 300px; */
       /* Margin: Space around an HTML Element */
     }
 
@@ -38,62 +36,38 @@
 
     }
 
-    .numContainer {
-      margin-top: -65px;
-      /*background-position-y: center;*/
-    }
 
-    .table_responsive {
-      padding: 0 30px 0 10px;
-      background: #333;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      padding: 0;
-      margin: 0;
-      font-family: sans-serif;
-      color: #333;
-    }
+    #currency1{
+  text-align: center;
 
-    /* .box_size{
-      height: 10000px;
-      width: 10000px;
-    } */
+    width: 560px;
+    height: 490px;
+    /* font-size: 38px; */
+    font-size: xx-large;
+}
 
-    #currency1 {
-      width: 450px;
-      height: 150px;
-    }
-
-    #currency2 {
-      width: 450px;
-      height: 150px;
-    }
+    #currency2{
+  text-align: center;
+    width: 560px;
+    height: 490px;
+    /* font-size: 38px; */
+    font-size: xx-large;
+}
 
     #currency1Amount {
-      width: 450px;
-      height: 75px;
-    }
-
-    #currency2Amount {
-      width: 450px;
-      height: 75px;
-    }
-
-    .table_responsive {
-      -webkit-appearance: menulist-button;
-      height: 50px;
+      margin-top: -60px;
+      width: 1135px;
+      height: 120px;
     }
 
     .button {
       border: none;
       color: white;
-      padding: 15px 32px;
+      padding: 40px 249px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
+      font-size: 20px;
       margin: 4px 2px;
       cursor: pointer;
       background-color: #4CAF50;
@@ -109,47 +83,53 @@
 
 </head>
 
-<body>
+<body style="background-color: rgba(0, 0, 0, 0.712);">
   <!-- refering to the entire page of tables that will be used -->
-
   <div class="container">
     <!-- a specific class to refer to the 2 table containing CSV data -->
 
     <div class="table-responsive">
       <!-- Header for the Page -->
-    <h1 align="center" class="invert" ><b>Currency Converter for Blind People</b></h1>
-      <br />
+      <h3 align="center" class="invert" style="font-family:Arial, Helvetica, sans-serif">
+        <b>
+          <font color="white">
+            Hello, and welcome to Currency converter. If you are using a Windows Device and would like to use speech recognition, press "windows button + h" 
+            If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' To scroll down, brush 2 fingers up
+        </font>
+        </b>
+      </h3>
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-      <form>
-        Currency 1:
-        <br>
-        <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="3" >
-
-          <!-- option allows for a text line to act as a place holder -->
-          <option>Choose a currency you would like to start from: </option>
-        </select>
-      </form>
-      <form>
-        Currency 2: <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
-
-          <option>Choose a currency you would like to convert to: </option>
-        </select>
-      </form>
-        <div class="output">
-          Currency 1 Amount: <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
-          <button class="button" type="button" onclick="conversion()"> Convert </button>
-          <input class="button" type="reset" value="Reset">
-      </form>
-    </div>
-    <br />
-    </p>
-    <br />
-  </div>
-  <br />
-  </div>
-  <br />
+          <form>
+            <div style="float:left; font-family:Arial, Helvetica, sans-serif">
+              <b style="font-size:20px">Currency 1:</b>
+              <br>
+              <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+              <br>
+              <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
+              <br>
+              <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="20" >
+                <!-- option allows for a text line to act as a place holder -->
+                <option>Choose a currency you would like to start from: </option>
+              </select>
+            </div>
+            <div style="float:right; font-family:Arial, Helvetica, sans-serif">
+              <b style="font-size:20px">Currency 2:</b>
+              <div>
+                <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+                <br>
+                <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
+                <br>
+              </div>
+            <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
+              <option>Choose a currency you would like to convert to: </option>
+            </select>
+            </div>
+        <input id="currency1Amount"  placeholder="Please input currency amount" name="amount">
+        <button class="button" type="button" onclick="conversion()"> Convert </button>
+        <input class = "button" type="reset" value="Reset">
+</form>
 
   <!-- sperating both divsions -->
 
@@ -166,7 +146,7 @@
 </html>
 
 <script>
-
+  
   ////////////////////////////////// -- Dropbox Logic -- //////////////////////////////////////
   function myFunc() {  //logic pertaining to the tables, to output each line:
   } $.ajax({
@@ -346,11 +326,12 @@
     });
   });
 
-  function put_it() {
-    var w = document.myform.sel_list.selectedIndex;
-    document.myform.r_text.value =
+  function put_it()
+   {
+   var w = document.myform.sel_list.selectedIndex;
+   document.myform.r_text.value = 
       document.myform.sel_list.options[w].text;
-  }
+   }
 
 
 </script>

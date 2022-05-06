@@ -9,8 +9,15 @@
     body {
       margin: 0;
       padding: 0;
-      font-family: 'Times New Roman', Times, serif;
+      /* font-family: 'Times New Roman', Times, serif; */
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: xx-large;
+      filter: invert(100%);
     }
+
+    .invert { 
+        filter: invert(100%);
+      }
 
     .container {
       position: relative;
@@ -74,7 +81,7 @@
 
 </head>
 
-<body>
+<body style="background-color: rgba(0, 0, 0, 0.712);">
   <!-- refering to the entire page of tables that will be used -->
   <div class="container">
     <!-- a specific class to refer to the 2 table containing CSV data -->
@@ -83,8 +90,10 @@
       <!-- Header for the Page -->
       <h3 align="center" class="invert" style="font-family:Arial, Helvetica, sans-serif">
         <b>
+          <font color="white">
           Hello, and welcome to Currency converter. If you are using a Windows Device and would like to use dictation, 
           If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' To scroll down, 
+        </font>
         </b>
       </h3>
       <p align="center">

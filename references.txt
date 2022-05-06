@@ -1,4 +1,17 @@
-Links to refernces in our code:
+Links to refernces for assistance in our code:
 
-Making a selection list over a drop-down list:
-https://www.webdevelopersnotes.com/html-forms-selection-list-and-double-clicks
+https://www.webdevelopersnotes.com/html-forms-selection-list-and-double-clicks - For assistance in using forms in HTML
+
+https://cloud.google.com/speech-to-text - For assistance in speech to text functionalities on the Google Platfrom
+
+https://whatwebcando.today/touch.html - For assistance in creating the scroll wheel and assigning touch gestures
+
+https://www.webdevelopersnotes.com/html-forms-selection-list-and-double-clicks - For assistance in placing data on a selection list in HTLM (also helped with options)
+
+https://stackoverflow.com/questions/12250065/receive-csv-file-as-data-in-ajax-success-function - For assistance in AJAX operations
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat - For assistance in connecting the conversion logic to the HTML File for output
+
+https://support.apple.com/guide/mac-help/control-your-mac-and-apps-using-voice-control-mh40719/mac - For assistance in utilizing speech to text on a mac system
+
+https://www.siteimprove.com/glossary/accessible-fonts/ - For assistance in selecting the proper font

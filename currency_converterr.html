@@ -5,19 +5,18 @@
 <head>
   <meta charset="utf-8">
   <style>
-    
     body {
       margin: 0;
       padding: 0;
       /* font-family: 'Times New Roman', Times, serif; */
       font-family: Arial, Helvetica, sans-serif;
-      
+
       filter: invert(100%);
     }
 
-    .invert { 
-        filter: invert(100%);
-      }
+    .invert {
+      filter: invert(100%);
+    }
 
     .container {
       position: relative;
@@ -37,22 +36,22 @@
     }
 
 
-    #currency1{
-  text-align: center;
+    #currency1 {
+      text-align: center;
 
-    width: 560px;
-    height: 490px;
-    /* font-size: 38px; */
-    font-size: xx-large;
-}
+      width: 560px;
+      height: 490px;
+      /* font-size: 38px; */
+      font-size: xx-large;
+    }
 
-    #currency2{
-  text-align: center;
-    width: 560px;
-    height: 490px;
-    /* font-size: 38px; */
-    font-size: xx-large;
-}
+    #currency2 {
+      text-align: center;
+      width: 560px;
+      height: 490px;
+      /* font-size: 38px; */
+      font-size: xx-large;
+    }
 
     #currency1Amount {
       margin-top: -60px;
@@ -93,52 +92,54 @@
       <h3 align="center" class="invert" style="font-family:Arial, Helvetica, sans-serif">
         <b>
           <font color="white">
-            Hello, and welcome to Currency converter. If you are using a Windows Device and would like to use speech recognition, press "windows button + h" 
-            If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' To scroll down, brush 2 fingers up
-        </font>
+            Hello, and welcome to Currency converter. If you are using a Windows Device and would like to use speech
+            recognition, press "windows button + h"
+            If your are on macOS, please activate voice control through Siri. Say 'Siri, turn on voice control.' To
+            scroll down, brush 2 fingers up
+          </font>
         </b>
       </h3>
       <p align="center">
         <!-- The next two id's refer to the two tables that will contain CSV data, logic defined by myFunc() -->
         <!-- <form action="conversion.js" align="center" method="post"> -->
-          <form>
-            <div style="float:left; font-family:Arial, Helvetica, sans-serif">
-              <b style="font-size:20px">Currency 1:</b>
-              <br>
-              <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
-              <br>
-              <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
-              <br>
-              <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="20" >
-                <!-- option allows for a text line to act as a place holder -->
-                <option>Choose a currency you would like to start from: </option>
-              </select>
-            </div>
-            <div style="float:right; font-family:Arial, Helvetica, sans-serif">
-              <b style="font-size:20px">Currency 2:</b>
-              <div>
-                <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
-                <br>
-                <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
-                <br>
-              </div>
-            <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
-              <option>Choose a currency you would like to convert to: </option>
-            </select>
-            </div>
-        <input id="currency1Amount"  placeholder="Please input currency amount" name="amount">
+      <form>
+        <div style="float:left; font-family:Arial, Helvetica, sans-serif">
+          <b style="font-size:20px">Currency 1:</b>
+          <br>
+          <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+          <br>
+          <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
+          <br>
+          <select id="currency1" ondblclick="myFunc()" name="Currency1" ondblclick="put_it()" size="20">
+            <!-- option allows for a text line to act as a place holder -->
+            <option>Choose a currency you would like to start from: </option>
+          </select>
+        </div>
+        <div style="float:right; font-family:Arial, Helvetica, sans-serif">
+          <b style="font-size:20px">Currency 2:</b>
+          <div>
+            <b style="font-size:20px">To choose a currency, brush your finger below this text.</b>
+            <br>
+            <b style="font-size:20px"> Tap to read currency type,double tap to select</b>
+            <br>
+          </div>
+          <select id="currency2" ondblclick="myFunc()" name="Currency2" ondblclick="put_it()" SIZE="3">
+            <option>Choose a currency you would like to convert to: </option>
+          </select>
+        </div>
+        <input id="currency1Amount" placeholder="Please input currency amount" name="amount">
         <button class="button" type="button" onclick="conversion()"> Convert </button>
-        <input class = "button" type="reset" value="Reset">
-</form>
+        <input class="button" type="reset" value="Reset">
+      </form>
 
-  <!-- sperating both divsions -->
+      <!-- sperating both divsions -->
 
-  <!-- Seperate Class for the output, so it can be aligned properly -->
-  <!-- <div class="output">
+      <!-- Seperate Class for the output, so it can be aligned properly -->
+      <!-- <div class="output">
     <h1 align="center">Output Testing</h1>
     <-- Creating a button to convert the two values -->
 
-  <!-- <button class="button" onclick="conversion()"> Convert </button>
+      <!-- <button class="button" onclick="conversion()"> Convert </button>
   </div> -->
 
 </body>
@@ -146,7 +147,7 @@
 </html>
 
 <script>
-  
+
   ////////////////////////////////// -- Dropbox Logic -- //////////////////////////////////////
   function myFunc() {  //logic pertaining to the tables, to output each line:
   } $.ajax({
@@ -326,12 +327,11 @@
     });
   });
 
-  function put_it()
-   {
-   var w = document.myform.sel_list.selectedIndex;
-   document.myform.r_text.value = 
+  function put_it() {
+    var w = document.myform.sel_list.selectedIndex;
+    document.myform.r_text.value =
       document.myform.sel_list.options[w].text;
-   }
+  }
 
 
 </script>

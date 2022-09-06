@@ -1,0 +1,48 @@
+Links to refernces for assistance in our code:
+
+https://www.webdevelopersnotes.com/html-forms-selection-list-and-double-clicks - For assistance in using forms in HTML
+
+https://cloud.google.com/speech-to-text - For assistance in speech to text functionalities on the Google Platfrom
+
+https://whatwebcando.today/touch.html - For assistance in creating the scroll wheel and assigning touch gestures
+
+https://www.webdevelopersnotes.com/html-forms-selection-list-and-double-clicks - For assistance in placing data on a selection list in HTLM (also helped with options)
+
+https://stackoverflow.com/questions/12250065/receive-csv-file-as-data-in-ajax-success-function - For assistance in AJAX operations
+
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/parseFloat - For assistance in connecting the conversion logic to the HTML File for output
+
+https://support.apple.com/guide/mac-help/control-your-mac-and-apps-using-voice-control-mh40719/mac - For assistance in utilizing speech to text on a mac system
+
+https://www.siteimprove.com/glossary/accessible-fonts/ - For assistance in selecting the proper font
+
+https://developer.mozilla.org/en-US/docs/Web/CSS/filter-function/invert - Invert function in CSS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Links to Packages and other Code related resources used directly in our code:
+
+https://www.npmjs.com/ - A Package system for Node.js wheirin we used BodyParser, FS and csv-parser, we updated NPM to the latest version and inherited almost every offered package
+
+npmjs.com/package/csv-parser - CSV-Parser (NPM Package)
+
+https://www.npmjs.com/package/body-parser - BodyParser (NPM Package)
+
+https://www.npmjs.com/package/file-system - File system (NPM Package)
+
+https://expressjs.com/ - Express Js Framework used to send and access data in conversion.js
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX - AJAX Developer Guides used to assist in AJAX function in currency_converter.html
+
+https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js - AJAX source code
+
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css - bootstrap.css
+
+https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js - bootstrap.js
+
+https://docs.npmjs.com/cli/v6/configuring-npm/package-json - Package.json
+
+https://docs.npmjs.com/cli/v7/configuring-npm/package-lock-json - package-lock.json
+
+
+
